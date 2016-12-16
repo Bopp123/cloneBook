@@ -6,6 +6,10 @@ const Contact = require('./contact');
 
 
 const UserSchema = new Schema({
+	username: {
+		type: String,
+		index: {unique: true}
+	},
 	name: Name,
 	age: Number,
 	address: [Address],
