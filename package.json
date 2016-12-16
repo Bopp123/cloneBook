@@ -1,0 +1,15 @@
+{
+  "name": "clonebook",
+  "version": "1.0.0",
+  "description": "a attempt to clone facebook with node.js and MongoDB as a backend",
+  "main": "index.js",
+  "scripts": {
+     "test": "nodemon --exec 'mocha'"
+  },
+  "author": "Konstantin Schall",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^3.2.0",
+    "mongoose": "^4.7.2"
+  }
+}
