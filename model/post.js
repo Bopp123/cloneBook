@@ -41,7 +41,7 @@ const PostSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'user'
 	}],
-	updated_at: { type: Date }
+	updated: { type: Date }
 });
 
 PostSchema.virtual('created').get( function () {
@@ -49,7 +49,7 @@ PostSchema.virtual('created').get( function () {
 });
 
 PostSchema.pre('save', function(next){
-  this.updated_at = Date.now();
+  this.updated = Date.now();
   next();
 });
 

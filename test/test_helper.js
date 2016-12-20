@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 before((done) => {
-  mongoose.connect('mongodb://root:root@ds011462.mlab.com:11462/clitterdb');
+  mongoose.connect('mongodb://root:root@ds139278.mlab.com:39278/clonebookdb_test');
   mongoose.connection
     .once('open', () => { 
     	console.log('Good To Go!');

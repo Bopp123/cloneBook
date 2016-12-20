@@ -1,8 +1,9 @@
 const assert = require('assert');
 const User = require('../model/user');
+const request = require('supertest');
 
-describe('Testing CRUD operations for user model', () => {	
-	let user;
+describe('Testing Service methods for user', () => {	
+	let user , user2, user3;
 	beforeEach((done) => {	
 		user = new User({
 			name: {
@@ -24,7 +25,47 @@ describe('Testing CRUD operations for user model', () => {
 				phone: 01234567
 			}
 		});
-		user.save()
+		user2 = new User({
+			name: {
+				firstName: 'Konstantin',
+				lastName: 'Schall'
+			},
+			username: 'konsi',
+			password: 'test123',
+			age: '27',
+			address: {
+				zip: '12053',
+				city: 'Berlin',
+				street: 'Herrmannstrasse',
+				streetNumber: 222,
+				country: 'Deutschland'
+			},
+			contact: {
+				email: 'test@gmx.de',
+				phone: 012345
+			}
+		});
+		user3 = new User({
+			name: {
+				firstName: 'Alex',
+				lastName: 'Rosin'
+			},
+			username: 'alex',
+			password: 'test123',
+			age: '27',
+			address: {
+				zip: '12053',
+				city: 'Berlin',
+				street: 'Herrmannstrasse',
+				streetNumber: 222,
+				country: 'Deutschland'
+			},
+			contact: {
+				email: 'test1234@gmx.de',
+				phone: 012345678
+			}
+		});
+		Promise.all([user.save(),user2.save(),user3.save()])
 		.then(() => {	
 			done();
 		});	

@@ -4,17 +4,20 @@
   "description": "a attempt to clone facebook with node.js and MongoDB as a backend",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon --exec 'mocha'"
+    "test": "NODE_ENV=test nodemon --exec 'mocha'",
+    "start": "nodemon index.js"
   },
   "author": "Konstantin Schall",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "lodash": "^4.17.2",
     "mocha": "^3.2.0",
     "mongoose": "^4.7.2",
     "mongoose-validator": "^1.2.5",
     "morgan": "^1.7.0",
-    "passport": "^0.3.2"
+    "passport": "^0.3.2",
+    "supertest": "^2.0.1"
   }
 }

@@ -11,6 +11,8 @@ describe('Testing CRUD operations for friendship model', () => {
 				lastName: 'Kunz'
 			},
 			age: '27',
+			password: 'test123',
+			username: 'joe',
 			address: {
 				zip: '12053',
 				city: 'Berlin',
@@ -29,6 +31,8 @@ describe('Testing CRUD operations for friendship model', () => {
 				lastName: 'Rosin'
 			},
 			age: '25',
+			username: 'alex',
+			password: 'test123',
 			address: {
 				zip: '12345',
 				city: 'Hamburg',

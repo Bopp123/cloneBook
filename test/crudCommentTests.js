@@ -11,6 +11,7 @@ describe('Testing CRUD operations for comment model', () => {
 				lastName: 'Kunz'
 			},
 			age: '27',
+			password: 'test123',
 			address: {
 				zip: '12053',
 				city: 'Berlin',
@@ -18,6 +19,7 @@ describe('Testing CRUD operations for comment model', () => {
 				streetNumber: 222,
 				country: 'Deutschland'
 			},
+			username: 'joe',
 			contact: {
 				email: 'test123@gmx.de',
 				phone: 01234567

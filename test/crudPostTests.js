@@ -2,7 +2,7 @@ const assert = require('assert');
 const Post = require('../model/post');
 
 describe('Testing CRUD operations for post model', () => {	
-	let post;
+	let post, timeStamp;
 	beforeEach((done) => {	
 		post = new Post({
 			title: 'test title',
@@ -12,6 +12,7 @@ describe('Testing CRUD operations for post model', () => {
 		});
 		post.save()
 		.then(() => {	
+			timeStamp = post.updated;
 			done();
 		})	
 	});
@@ -38,6 +39,7 @@ describe('Testing CRUD operations for post model', () => {
 		.then(() => {	
 			Post.findById(post._id)
 			.then((data) => {	
+				assert(data.updated !== timeStamp);
 				assert(data.title === 'new title');
 				assert(data.mediaType === 'VIDEO');
 				done();
