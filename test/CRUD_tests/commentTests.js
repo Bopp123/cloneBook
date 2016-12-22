@@ -1,6 +1,6 @@
 const assert = require('assert');
-const Comment = require('../model/comment');
-const User = require('../model/user');
+const Comment = require('../../model/comment');
+const User = require('../../model/user');
 
 describe('Testing CRUD operations for comment model', () => {	
 	let comment, user;

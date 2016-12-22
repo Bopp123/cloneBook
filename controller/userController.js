@@ -1,6 +1,6 @@
 const User = require('../model/user');
 const Friendship = require('../model/friendship');
-const _ = require('lodash');
+
 
 const create = (req, res) => {	
 	let params = req.body;
@@ -14,7 +14,7 @@ const create = (req, res) => {
 			if (error.code === 11000) {
 				res.status(406, "username, phonenumber or email are already taken");
 			}
-			res.json(error);
+			res.status(500).json(error);
 		});
 }
 
@@ -34,6 +34,7 @@ const getUser = (req,res) => {
 			res.json(user);
 		})	
 		.catch((error) => {	
+			res.status(404);
 			res.json(error);
 		});
 }
@@ -41,7 +42,7 @@ const getUser = (req,res) => {
 const getPosts = (req,res) => {	
 	User.findById(req.params.id)
 		.populate({
-				path: 'blogs',
+				path: 'posts',
 				populate: {
 					path: 'comments',
 					model: 'comment',
@@ -76,9 +77,10 @@ const update = (req,res) => {
 	User.findByIdAndUpdate(req.params.id, req.body)
 		.then((user) => {
 			if (user) {
-					res.send('OK')
-				}	
+				res.send('OK')
+				}else{
 			res.status(404);	
+			}	
 		})
 		.catch((error) => {	
 			res.json(error);

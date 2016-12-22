@@ -1,5 +1,5 @@
 const assert = require('assert');
-const Post = require('../model/post');
+const Post = require('../../model/post');
 
 describe('Testing CRUD operations for post model', () => {	
 	let post, timeStamp;

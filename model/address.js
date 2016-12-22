@@ -65,8 +65,12 @@ const AddressSchema = new Schema({
 	},
 	country: {
 		type: String,
-		required: [true, 'Country is required.'],
 		validate: countryValidator
+	},
+	city: {
+		type: String,
+		required: [true, 'City is required.'],
+		validate: cityValidator
 	}
 });
 

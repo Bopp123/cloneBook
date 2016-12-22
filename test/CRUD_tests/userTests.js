@@ -1,5 +1,5 @@
 const assert = require('assert');
-const User = require('../model/user');
+const User = require('../../model/user');
 
 describe('Testing CRUD operations for user model', () => {	
 	let user;

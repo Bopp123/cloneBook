@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const Schema = mongoose.Schema;
 const Name = require('./name');
 const Address = require('./address');
 const Contact = require('./contact');
+let salt = 'WENEEDMORESALT';
 
 
 const UserSchema = new Schema({
@@ -51,13 +53,26 @@ UserSchema.pre('remove', function (next) {
 		next();
 	});
 });
+
 UserSchema.methods.generateHash = function (secret) {
 	const hash = crypto.createHmac('sha256', secret)
-       .update('WENEEDMORESALT')
+       .update(salt)
        .digest('hex')
         	
 	return hash;
 
+}
+
+
+UserSchema.methods.generateJwt = function () {
+	var expiry = new Date();
+	expiry.setDate(expiry.getDate() +7);
+
+	return jwt.sign({
+	    _id: this._id,
+	    username: this.username,
+	    exp: parseInt(expiry.getTime() / 1000),
+	  }, salt); // DO NOT KEEP YOUR SECRET IN THE CODE!
 }
 
 UserSchema.pre('save', function (next) {

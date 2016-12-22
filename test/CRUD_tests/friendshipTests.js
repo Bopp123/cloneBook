@@ -1,6 +1,6 @@
 const assert = require('assert');
-const Friendship = require('../model/friendship');
-const User = require('../model/user');
+const Friendship = require('../../model/friendship');
+const User = require('../../model/user');
 
 describe('Testing CRUD operations for friendship model', () => {	
 	let friendship, user, user2;
