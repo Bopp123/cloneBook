@@ -10,6 +10,7 @@
   "author": "Konstantin Schall",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.7.19",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
@@ -20,8 +21,10 @@
     "mongoose": "^4.7.2",
     "mongoose-validator": "^1.2.5",
     "morgan": "^1.7.0",
+    "multer": "^1.2.1",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "stream-buffers": "^3.0.1"
   },
   "devDependencies": {
     "supertest": "^2.0.1"

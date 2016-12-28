@@ -1,5 +1,6 @@
 const UserController = require('../controller/userController');
 const Authentication = require('../controller/authentication');
+const multer = require("multer")();
 
 module.exports = (app, auth) => {	
 
@@ -24,6 +25,10 @@ module.exports = (app, auth) => {
 	//POST new user
 	//creates a new user from given request.body object
 	app.post('/data/user', UserController.create);
+
+	//PUT a new image
+	//add an profile avatar for given user
+	app.put('/data/user/img/:id', auth, multer.single("image"), UserController.addImage);
 
 	//PUT user
 	//updates a given user

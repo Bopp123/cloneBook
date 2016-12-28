@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const Name = require('./name');
 const Address = require('./address');
 const Contact = require('./contact');
-let salt = 'WENEEDMORESALT';
+const secret = require('../config/secrets.json');
 
 
 const UserSchema = new Schema({
@@ -32,6 +32,11 @@ const UserSchema = new Schema({
 	posts: [{
 		type: Schema.Types.ObjectId,
 		ref: 'post'
+	}],
+	avatar: String,
+	followingPosts: [{
+		type: Schema.Types.ObjectId,
+		ref: 'post'
 	}]
 });
 
@@ -54,10 +59,10 @@ UserSchema.pre('remove', function (next) {
 	});
 });
 
-UserSchema.methods.generateHash = function (secret) {
-	const hash = crypto.createHmac('sha256', secret)
-       .update(salt)
-       .digest('hex')
+UserSchema.methods.generateHash = function (password) {
+	const hash = crypto.createHmac('sha256', password)
+       .update(secret.salt)
+       .digest('hex');
         	
 	return hash;
 
@@ -72,7 +77,7 @@ UserSchema.methods.generateJwt = function () {
 	    _id: this._id,
 	    username: this.username,
 	    exp: parseInt(expiry.getTime() / 1000),
-	  }, salt); // DO NOT KEEP YOUR SECRET IN THE CODE!
+	  }, secret.token); // DO NOT KEEP YOUR SECRET IN THE CODE!
 }
 
 UserSchema.pre('save', function (next) {

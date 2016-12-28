@@ -31,9 +31,7 @@ const PostSchema = new Schema({
 		ref: 'comment'
 	}],
 	mediaType: {
-		type: String,
-		enum: ['NONE', 'IMG', 'VIDEO', 'AUDIO'],
-		default: 'NONE'
+		type: String
 	},
 	media: String,
 	likes: [LikesSchema],

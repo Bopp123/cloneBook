@@ -25,6 +25,10 @@ const CommentSchema = new Schema({
 	likes: [LikesSchema]
 });
 
+CommentSchema.virtual('likesCount').get(function () {
+	return this.likes.length;
+});
+
 
 const Comment = mongoose.model('comment', CommentSchema);
 module.exports = Comment;

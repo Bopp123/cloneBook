@@ -1,4 +1,5 @@
 const PostController = require("../controller/postController");
+const multer = require("multer")();
 
 module.exports = (app, auth) => {	
 
@@ -8,7 +9,7 @@ module.exports = (app, auth) => {
 
 	//POST new post
 	//creates a new post from given request.body object
-	app.post('/data/post', auth, PostController.create);
+	app.post('/data/post', auth, multer.single('image'), PostController.create);
 
 	//PUT post
 	//updates a given post

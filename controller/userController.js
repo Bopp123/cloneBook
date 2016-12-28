@@ -1,8 +1,9 @@
 const User = require('../model/user');
 const Friendship = require('../model/friendship');
+const aws = require('./helper/awsS3');
 
 
-const create = (req, res) => {	
+const create = (req, res) => {
 	let params = req.body;
 	// console.log(params);
 	User.create(params)
@@ -10,7 +11,7 @@ const create = (req, res) => {
 			user.password = "youdontneedtoknow";
 			res.json(user);
 		})
-		.catch((error) => {	
+		.catch((error) => {
 			if (error.code === 11000) {
 				res.status(406, "username, phonenumber or email are already taken");
 			}
@@ -18,82 +19,121 @@ const create = (req, res) => {
 		});
 }
 
-const getUsers = (req,res) => {	
+const getUsers = (req, res) => {
 	User.find(req.query)
-		.then((users) => {	
+		.then((users) => {
 			res.json(users);
 		})
-		.catch((error) => {	
+		.catch((error) => {
 			res.json(error);
 		});
 }
 
-const getUser = (req,res) => {	
+const getUser = (req, res) => {
 	User.findById(req.params.id)
-		.then((user) => {	
+		.then((user) => {
 			res.json(user);
-		})	
-		.catch((error) => {	
+		})
+		.catch((error) => {
 			res.status(404);
 			res.json(error);
 		});
 }
 
-const getPosts = (req,res) => {	
+const getPosts = (req, res) => {
 	User.findById(req.params.id)
 		.populate({
-				path: 'posts',
+			path: 'posts',
+			populate: {
+				path: 'comments',
+				model: 'comment',
 				populate: {
-					path: 'comments',
-					model: 'comment',
-					populate: {
-						path: 'author',
-						model: 'user'
-					}
+					path: 'author',
+					model: 'user'
 				}
+			}
 		})
-		.sort({updated: -1})
-		.then((user) => {	
+		.sort({
+			updated: -1
+		})
+		.then((user) => {
 			res.send(user.posts)
 		})
-		.catch((error) => {	
+		.catch((error) => {
 			res.json(error);
 		});
 }
 
-const getFriends = (req,res) => {	
-	Friendship.find({'$or' : [{'userOne': req.params.id}, 
-		{'userTwo': req.params.id}]})
-		.sort({_id: -1})
-		.then((result) => {	
+const getFriends = (req, res) => {
+	Friendship.find({
+			'$or': [{
+				'userOne': req.params.id
+			}, {
+				'userTwo': req.params.id
+			}]
+		})
+		.sort({
+			_id: -1
+		})
+		.then((result) => {
 			res.json(result);
 		})
-		.catch((error) => {	
+		.catch((error) => {
 			res.json(error);
 		})
 }
 
-const update = (req,res) => {	
+const update = (req, res) => {
 	User.findByIdAndUpdate(req.params.id, req.body)
 		.then((user) => {
 			if (user) {
 				res.send('OK')
-				}else{
-			res.status(404);	
-			}	
+			} else {
+				res.status(404);
+			}
 		})
-		.catch((error) => {	
+		.catch((error) => {
 			res.json(error);
 		});
 }
 
-const remove = (req,res) => {	
+const remove = (req, res) => {
 	User.findByIdAndRemove(req.params.id)
-		.then(() => {	
-		res.send('OK')
+		.then((data) => {
+			if (data.avatar !== '') {
+				aws.deleteS3('clonebookuser', data._id.toString())
+					.then((data) => {
+						res.send('OK');
+					})
+					.catch((err) => {
+						res.status(404).json('could not find users image');
+					})
+			} else {
+				res.send('OK');
+			}
 		})
-		.catch((error) => {	
+		.catch((error) => {
 			res.json(error);
+		});
+}
+
+const addImage = (req, res) => {
+	//bucketName, file, contentType, title
+	aws.uploadS3('clonebookuser', req.file.buffer, req.file.mimetype, req.params.id)
+		.then((data) => {
+			User.findByIdAndUpdate(req.params.id, {
+					'avatar': data.Location
+				})
+				.then((user) => {
+					if (user) {
+						res.send('OK')
+					} else {
+						res.status(404);
+					}
+				})
+				.catch((error) => {
+					res.json(error);
+				});
 		});
 }
 
@@ -105,14 +145,6 @@ module.exports = {
 	getUser,
 	getUsers,
 	getPosts,
-	getFriends
+	getFriends,
+	addImage
 }
-
-
-
-
-
-
-
-
-

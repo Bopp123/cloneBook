@@ -3,9 +3,10 @@ const postServices = require('./postServices');
 const friendshipServices = require('./friendshipServices');
 const commentServices = require('./commentServices');
 var jwt = require('express-jwt');
+const secret = require('../config/secrets.json');
 
 var auth = jwt({
-  secret: 'WENEEDMORESALT',
+  secret: secret.token,
 });
 
 module.exports = (app) => {	

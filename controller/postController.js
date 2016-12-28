@@ -1,21 +1,36 @@
 const Post = require("../model/post");
 const User = require("../model/user");
+const aws = require('./helper/awsS3');
+
+const savePost = (userId, post,res) => {	
+	Promise.all([User.findByIdAndUpdate(userId,{$push: {"posts": post._id}}), post.save()])
+		.then(() => {
+			res.json(post);
+		})
+		.catch((error) => {
+			res.json(error);
+		});	
+}
 
 const create = (req, res) => {
-	//TODO: requester will be implemted when authentication is done
-	User.findById(req.user._id)
-		.then((requester) => {
-			const post = new Post(req.body);
-			post.followers.push(requester);
-			requester.posts.push(post);
-			Promise.all([requester.save(), post.save()])
-				.then(() => {
-					res.json(post);
-				})
-				.catch((error) => {
-					res.json(error);
-				});
-		});
+	
+	const post = new Post(req.body);
+	post.followers.push(req.user._id);
+	if (req.file) {
+		//bucketName, file, contentType, title
+		aws.uploadS3('clonebookposts', req.file.buffer, req.file.mimetype, post._id.toString())
+		.then((data) => {
+			post.media = data.Location;
+			post.mediaType = req.file.mimetype;	
+			savePost(req.user._id, post,res);
+		})
+		.catch((err) => {	
+			res.status(500).json(err);
+		})
+
+	} else {
+		savePost(req.user._id, post,res);
+	}
 }
 
 const update = (req, res) => {
@@ -34,36 +49,42 @@ const update = (req, res) => {
 
 const remove = (req, res) => {
 	Post.findByIdAndRemove(req.params.id)
+		.then((data) => {
+			if(data.media !== ''){
+			aws.deleteS3('clonebookposts', data._id.toString())
+			.then((data) => {
+						res.send('OK');
+					})
+					.catch((err) => {
+						res.status(404).json('could not find post media');
+					})
+			} else {
+				res.send('OK');
+			}
+		})
+		.catch((error) => {
+			res.status(500).json(error);
+		});
+}
+
+const addLike = (req, res) => {
+	Post.findByIdAndUpdate(req.params.id, {
+			$addToSet: {
+				"likes": req.user._id,
+				"followers": req.user._id
+			}
+		})
 		.then(() => {
-			res.send('OK')
+			res.send("OK");
 		})
 		.catch((error) => {
 			res.json(error);
 		});
 }
 
-const addLike = (req, res) => {
-	User.findById(req.user._id)
-		.then((requester) => {
-			Post.findByIdAndUpdate(req.params.id, {
-					$addToSet: {
-						"likes": requester,
-						"followers": requester
-					}
-				})
-				.then(() => {
-					res.send("OK");
-				})
-				.catch((error) => {
-					res.json(error);
-				});
-		});
-}
-
 const getPostsForUser = (req, res) => {	
-	requester = req.user._id;
 	Post.find({
-			"followers": requester
+			"followers": req.user._id
 		})
 		.sort({
 			updated: -1

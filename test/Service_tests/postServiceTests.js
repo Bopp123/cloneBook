@@ -89,6 +89,33 @@ describe('Testing Service methods for post', () => {
 			});
 	});
 
+	it('POST /data/post with an attached image and DELETEs it in the end', (done) => {	
+		let idPost;
+		request(app)
+			.post(`/data/post`)
+			.set('Authorization', 'Bearer ' + token)
+			.field({
+				title: 'posttest',
+				content: 'test content 2'
+			})
+			.attach('image', '/Users/koschall/Development/cloneBook/test/Service_tests/klein.png')
+			.end((err,response) => {
+				idPost = response.body._id;
+				assert(response.body.media.includes("https://clonebookposts.s3.eu-central-1.amazonaws.com/"));
+				
+				request(app)
+					.delete(`/data/post/${idPost}`)
+					.set('Authorization', 'Bearer ' + token)
+					.end((err,response) => {
+						Post.findById(idPost)
+							.then((post) => {	
+								assert(post=== null);
+								done();
+							});
+			});		
+			});
+	});
+
 	it('PUT /data/post/:id a new title to an existing post', (done) => {	
 		let updatedPost = post1;
 		updatedPost.title = 'updated title';
@@ -112,7 +139,7 @@ describe('Testing Service methods for post', () => {
 			.delete(`/data/post/${post1._id}`)
 			.set('Authorization', 'Bearer ' + token)
 			.end((err,response) => {
-				User.findById(post1._id)
+				Post.findById(post1._id)
 					.then((post) => {	
 						assert(post=== null);
 						done();
