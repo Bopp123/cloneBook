@@ -2,52 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59cc16af-b812-411b-9b86-bf6ff7e7314e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/node_modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/src/components/Login.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/src/components/Signup.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/src/components/Start.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/src/global.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/src/routes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/controller/postController.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/controller/postController.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/config/aws.json" afterPath="$PROJECT_DIR$/Server/config/aws.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/config/passport.js" afterPath="$PROJECT_DIR$/Server/config/passport.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/config/secrets.json" afterPath="$PROJECT_DIR$/Server/config/secrets.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/controller/authentication.js" afterPath="$PROJECT_DIR$/Server/controller/authentication.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/controller/commentController.js" afterPath="$PROJECT_DIR$/Server/controller/commentController.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/controller/friendshipController.js" afterPath="$PROJECT_DIR$/Server/controller/friendshipController.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/controller/helper/awsS3.js" afterPath="$PROJECT_DIR$/Server/controller/helper/awsS3.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/controller/userController.js" afterPath="$PROJECT_DIR$/Server/controller/userController.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/model/address.js" afterPath="$PROJECT_DIR$/Server/model/address.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/model/blog.js" afterPath="$PROJECT_DIR$/Server/model/blog.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/model/comment.js" afterPath="$PROJECT_DIR$/Server/model/comment.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/model/contact.js" afterPath="$PROJECT_DIR$/Server/model/contact.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/model/friendship.js" afterPath="$PROJECT_DIR$/Server/model/friendship.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/model/likes.js" afterPath="$PROJECT_DIR$/Server/model/likes.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/model/name.js" afterPath="$PROJECT_DIR$/Server/model/name.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/model/post.js" afterPath="$PROJECT_DIR$/Server/model/post.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/model/user.js" afterPath="$PROJECT_DIR$/Server/model/user.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/routes/commentServices.js" afterPath="$PROJECT_DIR$/Server/routes/commentServices.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/routes/friendshipServices.js" afterPath="$PROJECT_DIR$/Server/routes/friendshipServices.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/routes/postServices.js" afterPath="$PROJECT_DIR$/Server/routes/postServices.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/routes/router.js" afterPath="$PROJECT_DIR$/Server/routes/router.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/routes/userServices.js" afterPath="$PROJECT_DIR$/Server/routes/userServices.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/CRUD_tests/commentTests.js" afterPath="$PROJECT_DIR$/Server/test/CRUD_tests/commentTests.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/CRUD_tests/friendshipTests.js" afterPath="$PROJECT_DIR$/Server/test/CRUD_tests/friendshipTests.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/CRUD_tests/postTests.js" afterPath="$PROJECT_DIR$/Server/test/CRUD_tests/postTests.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/CRUD_tests/userTests.js" afterPath="$PROJECT_DIR$/Server/test/CRUD_tests/userTests.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/Service_tests/commentServiceTests.js" afterPath="$PROJECT_DIR$/Server/test/Service_tests/commentServiceTests.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/Service_tests/friendshipServiceTests.js" afterPath="$PROJECT_DIR$/Server/test/Service_tests/friendshipServiceTests.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/Service_tests/klein.png" afterPath="$PROJECT_DIR$/Server/test/Service_tests/klein.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/Service_tests/postServiceTests.js" afterPath="$PROJECT_DIR$/Server/test/Service_tests/postServiceTests.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/Service_tests/userTests.js" afterPath="$PROJECT_DIR$/Server/test/Service_tests/userTests.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/test_helper.js" afterPath="$PROJECT_DIR$/Server/test/test_helper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -155,8 +110,8 @@
       <file leaf-file-name="Start.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Public/src/components/Start.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+            <state relative-caret-position="345">
+              <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -462,16 +417,16 @@
       <workItem from="1484297103760" duration="54000" />
       <workItem from="1484297168142" duration="751000" />
       <workItem from="1484297938544" duration="621000" />
-      <workItem from="1484298572527" duration="28965000" />
+      <workItem from="1484298572527" duration="29210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30436000" />
+    <option name="totallyTimeSpent" value="30681000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="960" height="1052" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24920128" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -481,7 +436,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -845,8 +800,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Public/src/components/Start.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+        <state relative-caret-position="345">
+          <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
           <folding />
         </state>
       </provider>
