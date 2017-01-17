@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container">
+    <div class="form">
         <div class="form-group">
             <label>Username</label>
             <input v-model="username" type="text" class="form-control" placeholder="Username"
@@ -47,8 +47,18 @@
                 Global.login(toSend)
                     .then((data) => {
                         Global.token = data.body.token;
+
                         Global.userId = data.body.id;
-                        this.$router.push('/home/' + data.body.id);
+
+                        Global.getUser(Global.userId)
+                            .then((data) => {
+                                Global.user = data.body;
+                                this.$router.push('/home/');
+                            }, (err) => {
+                                console.log(err);
+                            });
+
+
                     },(err) => {
                         this.error = true;
                     })
@@ -66,7 +76,12 @@
         margin-bottom: 1em;
         background-color:#333333;
     }
-    .container{
-       /*background-color: rgba(255, 238, 211, 0.8);*/
+    .form{
+        padding: 1em;
+    }
+
+    .err {
+        margin-top: 2em;
+        background-color: rgba(255, 112, 79, 0.7);
     }
 </style>

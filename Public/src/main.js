@@ -7,6 +7,8 @@ import {routes} from './routes';
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
+export const eventBus = new Vue();
+
 const router = new VueRouter({
     routes
 });

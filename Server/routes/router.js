@@ -4,6 +4,7 @@ const friendshipServices = require('./friendshipServices');
 const commentServices = require('./commentServices');
 var jwt = require('express-jwt');
 const secret = require('../config/secrets.json');
+const SearchController = require('../controller/searchController');
 
 var auth = jwt({
   secret: secret.token,
@@ -34,4 +35,9 @@ module.exports = (app) => {
 	-------------
 	**/
 	commentServices(app,auth);
+
+    /**
+	 * Search service
+     */
+    app.get('/data/search', auth, SearchController.search);
 };

@@ -250,7 +250,7 @@ describe('Testing Service methods for user', () => {
 		request(app)
 			.put(`/data/user/img/${user._id}`)
 			.set('Authorization', 'Bearer ' + token)
-			.attach('image', '/Users/koschall/Development/cloneBook/test/Service_tests/klein.png')
+			.attach('image', '/Users/koschall/Development/cloneBook/Server/test/Service_tests/klein.png')
 			.end((err, response) => {
 				assert(response.status === 200);
 				User.findById(user._id)

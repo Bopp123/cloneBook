@@ -1,19 +1,15 @@
 import Vue from 'vue';
 
 export const Global = new Vue({
-    data: function () {
-        return {
+    data: {
            token: "",
             userId: "",
             user: {}
 
-        };
+
     },
     http: {
-        root: '/data',
-        headers: {
-            Authorization: 'Bearer '+ this.token
-        }
+        root: '/data'
     },
     methods: {
         login(user){
@@ -21,11 +17,17 @@ export const Global = new Vue({
         },
         postUser(user){
             return this.$http.post('user',user);
+        },
+        getUser(userId){
+            return this.$http.get(`user/${userId}`, {headers: {'Authorization': `Bearer ${this.token}`}});
+        },
+        sendPost(formData){
+            return this.$http.post(`post`,formData, {headers: {'Authorization': `Bearer ${this.token}`}});
         }
     },
 
     computed: {
-        loggedIn: function(){
+        logedIn: function(){
             return this.userId !== "";
         }
     }

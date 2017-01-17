@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const LikesSchema = require('./likes');
 const validate = require('mongoose-validator');
 
+
 const titleValidator = 
   validate({
     validator: 'isLength',
@@ -37,6 +38,7 @@ const PostSchema = new Schema({
 	likes: [LikesSchema],
 	updated: { type: Date }
 });
+PostSchema.index({'$**': 'text'});
 
 PostSchema.virtual('created').get( function () {
   return this._id.getTimestamp();

@@ -1,10 +1,11 @@
 const assert = require('assert');
 const User = require('../../model/user');
 
-describe('Testing CRUD operations for user model', () => {	
+describe('Testing CRUD operations for user model', () => {
 	let user;
-	beforeEach((done) => {	
-		user = new User({
+	beforeEach((done) => {
+		//noinspection JSAnnotator
+        user = new User({
 			name: {
 				firstName: 'Joe',
 				lastName: 'Kunz'
@@ -34,6 +35,8 @@ describe('Testing CRUD operations for user model', () => {
 		assert(!user.isNew);
 	});
 
+
+
 	it('reads a user from DB and tests passwordHashing', (done) => {	
 		User.findById(user._id)
 			.select('+password')
@@ -55,7 +58,7 @@ describe('Testing CRUD operations for user model', () => {
 			.then((data) => {	
 				assert(data.name.firstName === 'Alex');
 				done();
-			})
+			});
 		})
 		.catch((error) => {	
 				console.log(error);
@@ -72,7 +75,8 @@ describe('Testing CRUD operations for user model', () => {
 				done();
 			})
 			.catch((err) => {	
-				console.log(err)
+				console.log(err);
 			});
 	});
+
 });

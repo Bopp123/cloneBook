@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 before((done) => {
-  mongoose.connect('mongodb://localhost:27017/clonebookdb_test');
+  mongoose.connect('mongodb://localhost:27017/clonebookdb');
   mongoose.connection
     .once('open', () => { 
     	console.log('Good To Go!');

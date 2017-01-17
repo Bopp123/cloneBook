@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="form">
         <div class="form-group">
             <label>First name</label>
             <input v-model="user.name.firstName" type="text" class="form-control">
@@ -90,7 +90,7 @@
 <style scoped>
     .err {
         margin-top: 2em;
-        background-color: #ff704f;
+        background-color: rgba(255, 112, 79, 0.7);
     }
     .btn-primary {
         width: 100%;
@@ -98,7 +98,7 @@
         background-color: #333333;
 
     }
-    .container{
-         /*background-color: rgba(255, 238, 211, 0.8);*/
+    .form{
+        padding: 1em;
     }
 </style>

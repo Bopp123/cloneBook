@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const router = require('./Server/routes/router');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const history = require('connect-history-api-fallback');
+
 
 
 

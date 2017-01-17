@@ -9,7 +9,7 @@ module.exports = (app, auth) => {
 
 	//POST new post
 	//creates a new post from given request.body object
-	app.post('/data/post', auth, multer.single('image'), PostController.create);
+	app.post('/data/post', auth, multer.single('media'), PostController.create);
 
 	//PUT post
 	//updates a given post

@@ -50,6 +50,7 @@ const create = (req, res) => {
 
 	const post = new Post(req.body);
 	if (req.file) {
+		if(req.body.mediaType !== 'youtube'){
 		//bucketName, file, contentType, title
 		aws.uploadS3('clonebookposts', req.file.buffer, req.file.mimetype, post._id.toString())
 			.then((data) => {
@@ -60,7 +61,9 @@ const create = (req, res) => {
 			.catch((err) => {
 				res.status(500).json(err);
 			})
-
+		}else{
+			savePost(req.user._id, post, res);
+		}
 	} else {
 		savePost(req.user._id, post, res);
 	}

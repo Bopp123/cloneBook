@@ -8,6 +8,7 @@ const Contact = require('./contact');
 const secret = require('../config/secrets.json');
 
 
+
 const UserSchema = new Schema({
 	username: {
 		type: String,
@@ -21,10 +22,14 @@ const UserSchema = new Schema({
 	},
 	name: {
 		type: Name,
+        text:true,
 		required: [true, 'Name is required.']
 	},
 	age: Number,
-	address: [Address],
+	birthday: Number,
+	address: {
+        type: [Address],
+	},
 	contact: {
 		type: Contact,
 		required: [true, 'Contact is required.']
@@ -39,19 +44,24 @@ const UserSchema = new Schema({
 		ref: 'post'
 	}]
 });
+UserSchema.index({'$**': 'text'});
+
 
 UserSchema.virtual('postCount').get(function () {
 	return this.posts.length;
-});
-UserSchema.virtual('friendshipCount').get(function () {
-	return this.friendships.length;
 });
 
 UserSchema.pre('remove', function (next) {
 	const Post = mongoose.model('post');
 	const Friendship = mongoose.model('friendship');
 	Promise.all([
-	Friendship.remove({_id: {$in: this.friendships}}),
+        Friendship.remove({
+            '$or': [{
+                'userOne': this._id
+            }, {
+                'userTwo': this._id
+            }]
+        }),
 	Post.remove({_id: {$in: this.posts}}) 
 	])
 	.then(() => {	
