@@ -47,8 +47,8 @@ const savePost = (userId, post, res) => {
 }
 
 const create = (req, res) => {
-
 	const post = new Post(req.body);
+	post.author = req.user._id;
 	if (req.file) {
 		if(req.body.mediaType !== 'youtube'){
 		//bucketName, file, contentType, title
@@ -104,16 +104,25 @@ const remove = (req, res) => {
 }
 
 const addLike = (req, res) => {
+    let user;
 	let post = Post.findByIdAndUpdate(req.params.id, {
-		$addToSet: {
-			"likes": req.user._id
-		}
-	});
-	let user = User.findByIdAndUpdate(req.user._id, {
-		$addToSet: {
-			"followingPosts": req.params.id
-		}
-	})
+        $addToSet: {
+            "likes": req.user._id
+        },
+        $set: {
+            "updated": Date.now()
+        }
+    })
+        .then((post) => {
+            if(post.author.toString() !== req.user._id){
+                 user = User.findByIdAndUpdate(req.user._id, {
+                    $addToSet: {
+                        "followingPosts": req.params.id
+                    }
+                });
+            }
+        })
+
 	Promise.all([post, user])
 		.then(() => {
 			res.send("OK");

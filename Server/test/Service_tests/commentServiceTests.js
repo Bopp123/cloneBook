@@ -76,15 +76,14 @@ describe('Testing Service methods for comment', () => {
 		});	
 	});
 
-	it('POST /data/comment/:postId sets a comment to given post', (done) => {	
+	it('POST /data/comment/:postId sets a comment to given post', (done) => {
 		request(app)
 			.post(`/data/comment/${post1._id}`)
 			.set('Authorization', 'Bearer ' + token)
 			.send({content: "blablabla"})
 			.end((err,response) => {
-				assert(response.body.title === post1.title);
-				assert(response.body.comments[1].content === 'blablabla');
-				assert(response.body.comments[1].author._id.toString() === user._id.toString());	
+				assert(response.body[1].content === 'blablabla');
+				assert(response.body[1].author._id.toString() === user._id.toString());
 				done();
 			});
 	});

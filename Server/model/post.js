@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const LikesSchema = require('./likes');
+// const LikesSchema = require('./likes');
 const validate = require('mongoose-validator');
 
 
@@ -19,6 +19,10 @@ const titleValidator =
   });
 
 const PostSchema = new Schema({
+    author:{
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    },
 	title: {
 		type: String,
 		validate: titleValidator
@@ -35,8 +39,11 @@ const PostSchema = new Schema({
 		type: String
 	},
 	media: String,
-	likes: [LikesSchema],
-	updated: { type: Date }
+	likes: [{
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    }],
+	updated: { type: Number }
 });
 PostSchema.index({'$**': 'text'});
 
@@ -45,9 +52,11 @@ PostSchema.virtual('created').get( function () {
 });
 
 PostSchema.pre('save', function(next){
-  this.updated = Date.now();
+    console.log('saved');
+  this.updated =  Date.now();
   next();
 });
+
 
 PostSchema.virtual('likesCount').get(function () {
 	return this.likes.length;

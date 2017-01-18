@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
         <div class="flex">
             <div class="avatar">
                 <img v-if="user.avatar" src="user.avatar">
@@ -30,13 +30,23 @@
             </div>
             <button ref="button" class="btn">Edit</button>
         </div>
-        <div v-if="!newpost" class="text-center plus">
-            <button @click="showNewPost" class="post-btn">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </button>
-        </div>
-        <div ref="post" v-else>
-        <new-post  ></new-post>
+        <div class="post">
+            <div v-if="!newpost" class="text-center plus">
+                <button @click="showNewPost" class="post-btn">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div ref="post" v-else>
+                <new-post></new-post>
+            </div>
+            <p class="text-center" v-if="loading">
+                <span class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></span>
+            </p>
+            <div class="post-list">
+                <div v-for="post in posts">
+                    <single-post :post="post"></single-post>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -44,28 +54,49 @@
 
 <script>
     import Newpost from './NewPost.vue';
+    import Singlepost from './SinglePost.vue';
     import {eventBus} from "../main";
+    import {Global} from '../global.js';
     export default {
         components: {
-            newPost: Newpost
+            newPost: Newpost,
+            singlePost: Singlepost
         },
         data: function () {
             return {
-                newpost: false
+                newpost: false,
+                posts: [],
+                loading: true
             }
         },
         props: {
             user: Object
         },
-        methods:{
+        methods: {
             showNewPost(){
                 this.newpost = true;
             }
         },
         created(){
-            eventBus.$on('posted', () => {
-                this.newpost = false;
-            })
+            eventBus.$on('posted', (post) => {
+                this.loading = false;
+                this.posts.unshift(post);
+            });
+
+            eventBus.$on('posting', () => {
+                this.loading = true;
+            this.newpost = false;
+            });
+        },
+        mounted(){
+            if (!Global.userId) return;
+            Global.getPosts(Global.userId)
+                .then((data) => {
+                    this.posts = data.body;
+                    this.loading = false;
+                }, (err) => {
+                    console.log(err);
+                })
         }
     }
 </script>
@@ -82,7 +113,7 @@
         padding-bottom: 2em;
     }
 
-    .plus{
+    .plus {
         border-bottom-width: 3px;
         border-bottom-style: solid;
         border-bottom-color: #3333;
@@ -109,19 +140,20 @@
         background-color: #333;
     }
 
-    .post-btn{
-         width: 10vh;
-         height: 10vh;
-         margin-top: 4vh;
-         background-color: white;
-         border: 0px;
+    .post-btn {
+        width: 10vh;
+        height: 10vh;
+        margin-top: 4vh;
+        background-color: white;
+        border: 0px;
 
-     }
-    .post-btn:focus{
+    }
+
+    .post-btn:focus {
         outline: 0;
     }
 
-    .post-btn:hover{
+    .post-btn:hover {
         width: 10vh;
         height: 10vh;
         margin-top: 4vh;
@@ -130,8 +162,19 @@
         transform: scale(1.1);
     }
 
-    .post-btn>span{
+    .post-btn > span {
         font-size: 9vh;
     }
+
+    .post {
+        margin-bottom: 2em;
+    }
+
+    .fa-spin{
+        font-size: 6em;
+        margin-bottom: 2em;
+        margin-top: 2em;
+    }
+
 
 </style>

@@ -28,6 +28,11 @@ export const routes = [
                 path: 'history',  name: 'history'
             },{
             path: '' , component: User, name:'home'
+            },
+            {
+                path:'/home/user/:id',
+                name: 'userView',
+                component: Info
             }
         ]
     },{

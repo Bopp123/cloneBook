@@ -31,7 +31,7 @@
     export default{
         data: function () {
             return {
-                user: {}
+                user: {},
             }
         },
         components:{
@@ -50,8 +50,6 @@
         },
         mounted(){
             this.user = Global.user;
-            console.log('mounted');
-
         }
     }
 </script>
@@ -59,6 +57,7 @@
 <style scoped>
     .main{
         margin-top: -65px;
+        max-width: 1000px;
     }
 
     .nav{

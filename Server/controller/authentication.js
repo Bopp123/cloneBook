@@ -5,7 +5,7 @@ const User = require('../model/user');
 module.exports.login = function(req, res) {
 
   passport.authenticate('local', function(err, user, info){
-    var token;
+    let token;
 
     // If Passport throws/catches an error
     if (err) {

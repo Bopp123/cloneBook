@@ -23,6 +23,18 @@ export const Global = new Vue({
         },
         sendPost(formData){
             return this.$http.post(`post`,formData, {headers: {'Authorization': `Bearer ${this.token}`}});
+        },
+        getPosts(userId){
+            return this.$http.get(`user/${userId}/posts`, {headers: {'Authorization': `Bearer ${this.token}`}});
+        },
+        postLike(postId){
+            return this.$http.put(`post/${postId}/like`, null,{headers: {'Authorization': `Bearer ${this.token}`}});
+        },
+        sendComment(postId, text){
+            const toSend = {
+                content: text
+            };
+            return this.$http.post(`comment/${postId}`,toSend, {headers: {'Authorization': `Bearer ${this.token}`}});
         }
     },
 

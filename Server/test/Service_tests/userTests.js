@@ -181,7 +181,7 @@ describe('Testing Service methods for user', () => {
 			});
 	});
 
-	it('GET all posts, an user with given id has posted', (done) => {
+	it.only('GET all posts, an user with given id has posted', (done) => {
 
 		post1 = new Post({
 			title: 'test title',
@@ -199,7 +199,8 @@ describe('Testing Service methods for user', () => {
 			title: 'test title3',
 			content: 'test content 3',
 			mediaType: 'IMG',
-			media: 'http://placekitten.com/200/300'
+			media: 'http://placekitten.com/200/300',
+            author: user._id
 		});
 		Promise.all([post1.save(), post2.save(), post3.save()])
 			.then(() => {

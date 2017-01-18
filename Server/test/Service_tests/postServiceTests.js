@@ -123,7 +123,7 @@ describe('Testing Service methods for post', () => {
 				title: 'posttest',
 				content: 'test content 2'
 			})
-			.attach('image', '/Users/koschall/Development/cloneBook/Server/test/Service_tests/klein.png')
+			.attach('media', '/Users/koschall/Development/cloneBook/Server/test/Service_tests/klein.png')
 			.end((err, response) => {
 				idPost = response.body._id;
 				assert(response.body.media.includes("https://clonebookposts.s3.eu-central-1.amazonaws.com/"));

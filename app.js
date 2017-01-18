@@ -14,7 +14,7 @@ const passport = require('passport');
 const app = express();
 app.use(bodyParser.urlencoded({'extended': 'true'})); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/Public'));
+
 
 
 
@@ -22,6 +22,7 @@ app.use(express.static(__dirname + '/Public'));
 
 
 if(process.env.NODE_ENV !== 'test'){
+    app.use(express.static(__dirname + '/Public'));
     app.use(morgan('dev')); // log every request to the console
     mongoose.Promise = require('bluebird');
     mongoose.connect('mongodb://root:root@ds139438.mlab.com:39438/clonebookdb');
