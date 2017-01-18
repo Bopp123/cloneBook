@@ -35,7 +35,10 @@ export const Global = new Vue({
                 content: text
             };
             return this.$http.post(`comment/${postId}`,toSend, {headers: {'Authorization': `Bearer ${this.token}`}});
-        }
+        },
+        postCommentLike(commentId){
+            return this.$http.put(`comment/${commentId}/like`, null,{headers: {'Authorization': `Bearer ${this.token}`}});
+        },
     },
 
     computed: {

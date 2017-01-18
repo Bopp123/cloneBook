@@ -24,6 +24,13 @@
             </div>
 
         </div>
+        <div class="comments-display" v-if="showComm">
+            <!--comments-->
+            <div v-for="comment in post.comments">
+                <comment-comp :comment="comment" :key="comment._id"></comment-comp>
+            </div>
+
+        </div>
         <div class="buttons flex">
             <div class="likes flex">
                 <button v-if="!liked" class="btn" @click="addLike">Like</button>
@@ -37,17 +44,10 @@
                     </span>
             </div>
             <div class="comments">
-                <button class="btn" @click="showComm = !showComm">Show {{commentsCount}} Comments</button>
+                <button class="btn" @click="showComm = !showComm">{{showHide}} {{commentsCount}} Comments</button>
             </div>
         </div>
-        <div class="comments-display" v-if="showComm">
 
-            <div v-for="comment in post.comments">
-                <p>{{comment.content}}</p>
-                <comment-comp :comment="comment"></comment-comp>
-            </div>
-
-        </div>
     </div>
 </template>
 
@@ -79,8 +79,8 @@
             postComment(){
                 Global.sendComment(this.post._id, this.commentText)
                     .then((data) => {
-                        console.log(data.body)
                         this.post.comments = data.body;
+                        this.showComm = true;
                     }, (err) => {
                         console.log(err);
                     })
@@ -100,8 +100,7 @@
             commentsCount(){
                 let count = this.post.comments.length;
                 if (count === 0) {
-                    //TODO: remove after testing
-                    return 7;
+                    return 0;
                 }
                 return count;
             },
@@ -121,6 +120,10 @@
             getUserId(){
                 if (this.post.author._id) return this.post.author._id;
                 return Global.userId;
+            },
+            showHide(){
+                if(this.showComm) return 'Hide';
+                return 'Show';
             }
         }
     }
@@ -212,10 +215,6 @@
         margin-bottom: auto;
     }
 
-    likes {
-
-    }
-
     .buttons {
         margin-top: 2em;
     }
@@ -238,5 +237,11 @@
         margin-top: 2em;
     }
 
+    .comments-display{
+        border-top-width: 2px;
+        border-top-style: solid;
+        border-top-color: #333333;
+        margin-top: 2em;
+    }
 
 </style>

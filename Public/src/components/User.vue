@@ -44,7 +44,7 @@
             </p>
             <div class="post-list">
                 <div v-for="post in posts">
-                    <single-post :post="post"></single-post>
+                    <single-post :post="post" :key="post._id"></single-post>
                 </div>
             </div>
         </div>
@@ -75,6 +75,17 @@
         methods: {
             showNewPost(){
                 this.newpost = true;
+            },
+            fetchUserPost(){
+                console.log('fetch');
+                if (!Global.userId) return;
+                Global.getPosts(Global.userId)
+                    .then((data) => {
+                    this.posts = data.body;
+                this.loading = false;
+            }, (err) => {
+                    console.log(err);
+                });
             }
         },
         created(){
@@ -90,13 +101,7 @@
         },
         mounted(){
             if (!Global.userId) return;
-            Global.getPosts(Global.userId)
-                .then((data) => {
-                    this.posts = data.body;
-                    this.loading = false;
-                }, (err) => {
-                    console.log(err);
-                })
+            this.fetchUserPost();
         }
     }
 </script>

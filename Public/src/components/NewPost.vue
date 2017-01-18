@@ -187,7 +187,7 @@
         font-size: 2.5vh;
         outline: none;
         min-height: 10vh;
-
+        resize: none
     }
 
     textarea::-webkit-scrollbar {

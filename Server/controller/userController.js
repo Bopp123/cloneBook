@@ -10,7 +10,8 @@ const postPopQuery = [{
         model: 'user',
         select: 'username +_id + avatar'
     }
-}, {
+},
+    {
     path: 'author',
     model: 'user',
     select: 'username +_id + avatar'

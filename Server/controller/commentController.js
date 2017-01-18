@@ -26,11 +26,15 @@ const create = (req, res) => {
                     populate: {
                         path: 'author',
                         model: 'user',
-                        select: 'name +_id +avatar'
+                        select: '_id +avatar + username'
                     }
                 })
                 .then((post) => {
-                    res.status(200).json(post.comments)
+                    let comments = post.comments;
+                    comments.sort((a, b) => {
+                        return b.updated < a.updated;
+                    });
+                    res.status(200).json(comments);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -66,9 +70,10 @@ const remove = (req, res) => {
 }
 
 const addLike = (req, res) => {
+    console.log(req.user._id);
     Comment.findByIdAndUpdate(req.params.id, {
         $addToSet: {
-            "likes": req.user_id
+            "likes": req.user._id
         }
     })
         .then(() => {
@@ -76,14 +81,18 @@ const addLike = (req, res) => {
                 comments: req.params.id
             })
                 .then((post) => {
-                    User.findByIdAndUpdate(req.user._id, {
-                        $addToSet: {
-                            "followingPosts": post._id
-                        }
-                    })
-                        .then(() => {
-                            res.send("OK");
-                        });
+                    if (post.author.toString() !== req.user._id) {
+                        User.findByIdAndUpdate(req.user._id, {
+                            $addToSet: {
+                                "followingPosts": req.params.id
+                            }
+                        })
+                            .then(() => {
+                                res.json('OK');
+                            });
+                    } else {
+                        res.json('OK');
+                    }
                 });
         })
         .catch((error) => {

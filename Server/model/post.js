@@ -7,14 +7,14 @@ const validate = require('mongoose-validator');
 const titleValidator = 
   validate({
     validator: 'isLength',
-    arguments: [2, 180],
+    arguments: [1, 180],
     message: 'Title should be between {ARGS[0]} and {ARGS[1]} characters'
   });
 
   const contentValidator = 
   validate({
     validator: 'isLength',
-    arguments: [2, 5000],
+    arguments: [1, 5000],
     message: 'Content should be between {ARGS[0]} and {ARGS[1]} characters'
   });
 

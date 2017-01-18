@@ -2,25 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59cc16af-b812-411b-9b86-bf6ff7e7314e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/src/components/CommentComp.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/src/components/SinglePost.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/dist/build.js" afterPath="$PROJECT_DIR$/Public/dist/build.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/index.html" afterPath="$PROJECT_DIR$/Public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/src/components/Home.vue" afterPath="$PROJECT_DIR$/Public/src/components/Home.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/src/components/CommentComp.vue" afterPath="$PROJECT_DIR$/Public/src/components/CommentComp.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/src/components/NewPost.vue" afterPath="$PROJECT_DIR$/Public/src/components/NewPost.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/src/components/SinglePost.vue" afterPath="$PROJECT_DIR$/Public/src/components/SinglePost.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/src/components/User.vue" afterPath="$PROJECT_DIR$/Public/src/components/User.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/src/global.js" afterPath="$PROJECT_DIR$/Public/src/global.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/src/routes.js" afterPath="$PROJECT_DIR$/Public/src/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/controller/authentication.js" afterPath="$PROJECT_DIR$/Server/controller/authentication.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/controller/commentController.js" afterPath="$PROJECT_DIR$/Server/controller/commentController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/controller/postController.js" afterPath="$PROJECT_DIR$/Server/controller/postController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/controller/userController.js" afterPath="$PROJECT_DIR$/Server/controller/userController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/model/comment.js" afterPath="$PROJECT_DIR$/Server/model/comment.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/model/post.js" afterPath="$PROJECT_DIR$/Server/model/post.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/test/Service_tests/commentServiceTests.js" afterPath="$PROJECT_DIR$/Server/test/Service_tests/commentServiceTests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/test/Service_tests/postServiceTests.js" afterPath="$PROJECT_DIR$/Server/test/Service_tests/postServiceTests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/test/Service_tests/userTests.js" afterPath="$PROJECT_DIR$/Server/test/Service_tests/userTests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -44,8 +36,8 @@
       <file leaf-file-name="NewPost.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Public/src/components/NewPost.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="138" column="5" lean-forward="true" selection-start-line="136" selection-start-column="4" selection-end-line="138" selection-end-column="5" />
+            <state relative-caret-position="270">
+              <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
               <folding>
                 <element signature="n#button#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="e#1542#1575#0" expanded="true" />
@@ -54,41 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="userController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/controller/userController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="90" column="34" lean-forward="false" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/model/post.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="postController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/controller/postController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="113" column="9" lean-forward="true" selection-start-line="110" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="friendshipController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/controller/friendshipController.js">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="32" />
+              <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -97,21 +59,11 @@
       <file leaf-file-name="SinglePost.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Public/src/components/SinglePost.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="220" column="5" lean-forward="true" selection-start-line="220" selection-start-column="5" selection-end-line="220" selection-end-column="5" />
+            <state relative-caret-position="210">
+              <caret line="51" column="11" lean-forward="true" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
               <folding>
-                <element signature="e#2157#2193#0" expanded="true" />
+                <element signature="e#2169#2205#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Home.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/src/components/Home.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="59" column="23" lean-forward="false" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -119,11 +71,31 @@
       <file leaf-file-name="User.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Public/src/components/User.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1856">
-              <caret line="167" column="0" lean-forward="true" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+            <state relative-caret-position="585">
+              <caret line="46" column="61" lean-forward="false" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="61" />
               <folding>
-                <element signature="e#2065#2101#0" expanded="true" />
+                <element signature="e#2081#2117#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/model/post.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="44" column="7" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="44" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="postController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/controller/postController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="115" column="25" lean-forward="true" selection-start-line="115" selection-start-column="25" selection-end-line="115" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -131,18 +103,38 @@
       <file leaf-file-name="CommentComp.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Public/src/components/CommentComp.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+            <state relative-caret-position="555">
+              <caret line="55" column="22" lean-forward="true" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="commentController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="global.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Public/src/global.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="comment.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/model/comment.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="commentController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server/controller/commentController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+            <state relative-caret-position="274">
+              <caret line="69" column="1" lean-forward="true" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -165,6 +157,7 @@
       <find>scale</find>
       <find>con</find>
       <find>cons</find>
+      <find>flex</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -202,18 +195,19 @@
         <option value="$PROJECT_DIR$/Server/test/Service_tests/postServiceTests.js" />
         <option value="$PROJECT_DIR$/Public/src/routes.js" />
         <option value="$PROJECT_DIR$/Public/src/components/Comment.vue" />
-        <option value="$PROJECT_DIR$/Public/src/components/CommentComp.vue" />
-        <option value="$PROJECT_DIR$/Public/src/global.js" />
         <option value="$PROJECT_DIR$/Server/test/Service_tests/commentServiceTests.js" />
         <option value="$PROJECT_DIR$/Server/test/Service_tests/userTests.js" />
-        <option value="$PROJECT_DIR$/Public/src/components/NewPost.vue" />
         <option value="$PROJECT_DIR$/Public/src/components/Home.vue" />
+        <option value="$PROJECT_DIR$/Server/controller/postController.js" />
+        <option value="$PROJECT_DIR$/Server/model/post.js" />
+        <option value="$PROJECT_DIR$/Public/src/components/NewPost.vue" />
         <option value="$PROJECT_DIR$/Public/src/components/User.vue" />
         <option value="$PROJECT_DIR$/Public/src/components/SinglePost.vue" />
-        <option value="$PROJECT_DIR$/Server/model/post.js" />
-        <option value="$PROJECT_DIR$/Server/controller/postController.js" />
-        <option value="$PROJECT_DIR$/Server/controller/commentController.js" />
+        <option value="$PROJECT_DIR$/Public/src/global.js" />
+        <option value="$PROJECT_DIR$/Public/src/components/CommentComp.vue" />
+        <option value="$PROJECT_DIR$/Server/model/comment.js" />
         <option value="$PROJECT_DIR$/Server/controller/userController.js" />
+        <option value="$PROJECT_DIR$/Server/controller/commentController.js" />
       </list>
     </option>
   </component>
@@ -240,7 +234,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1099" />
+    <option name="width" value="1020" />
     <option name="height" value="1053" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -502,25 +496,25 @@
       <workItem from="1484582296965" duration="18561000" />
       <workItem from="1484645599172" duration="23003000" />
       <workItem from="1484740702981" duration="3200000" />
-      <workItem from="1484744747777" duration="9412000" />
+      <workItem from="1484744747777" duration="19837000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122015000" />
+    <option name="totallyTimeSpent" value="132440000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1099" height="1053" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1020" height="1053" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25788498" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24224225" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2955255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24920128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.119667016" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -662,13 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/model/name.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/test/test_helper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -751,6 +738,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -790,30 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="36" column="9" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/src/components/Head.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="48" column="40" lean-forward="false" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/src/global.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/model/comment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="19" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="22" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -858,45 +822,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/src/components/NewPost.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="138" column="5" lean-forward="true" selection-start-line="136" selection-start-column="4" selection-end-line="138" selection-end-column="5" />
-          <folding>
-            <element signature="n#button#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#1542#1575#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/src/components/CommentComp.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/src/components/User.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1856">
-          <caret line="167" column="0" lean-forward="true" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
-          <folding>
-            <element signature="e#2065#2101#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/src/components/SinglePost.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="220" column="5" lean-forward="true" selection-start-line="220" selection-start-column="5" selection-end-line="220" selection-end-column="5" />
-          <folding>
-            <element signature="e#2157#2193#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/controller/friendshipController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -905,34 +830,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/model/post.js">
+    <entry file="file://$PROJECT_DIR$/Server/model/name.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="420">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/controller/postController.js">
+    <entry file="file://$PROJECT_DIR$/Public/src/components/Head.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="113" column="9" lean-forward="true" selection-start-line="110" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+        <state relative-caret-position="450">
+          <caret line="48" column="40" lean-forward="false" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/controller/commentController.js">
+    <entry file="file://$PROJECT_DIR$/Public/src/components/NewPost.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+          <folding>
+            <element signature="n#button#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#1542#1575#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/src/components/User.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="46" column="61" lean-forward="false" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="61" />
+          <folding>
+            <element signature="e#2081#2117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/src/components/SinglePost.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="51" column="11" lean-forward="true" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
+          <folding>
+            <element signature="e#2169#2205#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/src/global.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/src/components/CommentComp.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="55" column="22" lean-forward="true" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/model/post.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="44" column="7" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="44" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/model/comment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/controller/userController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="90" column="34" lean-forward="false" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
+        <state relative-caret-position="75">
+          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/controller/postController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="115" column="25" lean-forward="true" selection-start-line="115" selection-start-column="25" selection-end-line="115" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/controller/commentController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="69" column="1" lean-forward="true" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
           <folding />
         </state>
       </provider>
