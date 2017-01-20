@@ -26,7 +26,7 @@ const create = (req, res) => {
                     populate: {
                         path: 'author',
                         model: 'user',
-                        select: '_id +avatar + username'
+                        select: 'username +_id + avatar'
                     }
                 })
                 .then((post) => {

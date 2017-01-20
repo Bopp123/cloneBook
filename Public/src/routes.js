@@ -4,6 +4,8 @@ import Signup from './components/Signup.vue';
 import Info from './components/Info.vue';
 import Home from './components/Home.vue';
 import User from './components/User.vue';
+import UserView from './components/UserView.vue';
+import {Global} from './global.js';
 
 export const routes = [
     {
@@ -17,26 +19,33 @@ export const routes = [
     ]
     }, {
         path: '/home',
-        component: Home, children: [
+        beforeEnter: (to, from, next) => {
+            if (!Global.logedIn) {
+                next({name: 'login'});
+            }
+            next();
+        },
+        component: Home,
+        children: [
             {
                 path: 'edit', name: 'edit'
             },
             {
-                path: 'friends',  name: 'friends'
+                path: 'friends', name: 'friends'
             },
             {
-                path: 'history',  name: 'history'
-            },{
-            path: '' , component: User, name:'home'
+                path: 'history', name: 'history', component: UserView
+            }, {
+                path: '', component: User, name: 'home'
             },
             {
-                path:'/home/user/:id',
+                path: '/home/user/:id',
                 name: 'userView',
-                component: Info
+                component: UserView
             }
         ]
-    },{
-        path:'/info',
+    }, {
+        path: '/info',
         component: Info
     }
 ];

@@ -35,7 +35,7 @@
             },
             avatar(){
                 if (!this.comment.author.avatar) return "http://placehold.it/60x60";
-                return this.comment.avatar;
+                return this.comment.author.avatar;
             },
             liked(){
                 return this.comment.likes.includes(Global.userId);
@@ -49,18 +49,12 @@
             addLike(){
                 Global.postCommentLike(this.comment._id)
                     .then((data) => {
-                    console.log(data);
                         this.comment.likes.push(Global.userId);
                     }, (err) => {
                         console.log(err);
                     })
             }
-        },
-
-        mounted(){
-            console.log(this.comment.likes, "  ",this.comment.content);
         }
-
     }
 </script>
 
@@ -72,8 +66,8 @@
     }
 
     .avatar {
-        width: 2vh;
-        height: 2vh;
+       max-width: 6vh;
+        max-height: 6vh;
         margin-top: 5px;
         margin-right: 10px;
     }

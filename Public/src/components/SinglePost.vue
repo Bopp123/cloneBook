@@ -3,12 +3,16 @@
         <div class="text-center">
             <div class="post text-center">
 
-                <router-link :to="{name: 'userView' , params: { id: getUserId }}"><a>
+
                     <div class="flex">
+                        <router-link :to="{name: 'userView' , params: { id: getUserId }}"><a>
                         <img :src="avatar" class="avatar">
+                        </a></router-link>
+                        <router-link :to="{name: 'userView' , params: { id: getUserId }}"><a>
                         <h2 class="user">{{post.author.username}}</h2>
+                        </a></router-link>
                     </div>
-                </a></router-link>
+
 
                 <div class="title">
                     <p class="post-title" v-if="post.title !== 'undefined'">{{post.title}}</p>
@@ -81,6 +85,7 @@
                     .then((data) => {
                         this.post.comments = data.body;
                         this.showComm = true;
+                        this.commentText = '';
                     }, (err) => {
                         console.log(err);
                     })
@@ -112,7 +117,7 @@
             },
             avatar(){
                 if (!this.post.author.avatar) return "http://placehold.it/60x60";
-                return this.post.avatar;
+                return this.post.author.avatar;
             },
             liked(){
                 return this.post.likes.includes(Global.userId);
@@ -137,11 +142,12 @@
         border-style: solid;
         border-color: #333333;
         padding: 1em;
+        transition: transform 0.5s linear;
     }
 
     .avatar {
-        width: 5vw;
-        height: 5vw;
+        max-width: 8vh;
+        max-height: 8vh;
         margin-top: 5px;
         margin-right: 10px;
     }
@@ -157,6 +163,7 @@
 
     .user {
         margin-right: auto;
+        margin-top: -1px;
     }
 
     .comments {

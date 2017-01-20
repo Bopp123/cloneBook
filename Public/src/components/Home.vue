@@ -4,7 +4,7 @@
             <div class=" nav">
             <ul class=" nav nav-pills">
                 <router-link :to="{name: 'home'}"  exact tag="li" active-class="active"><a>Home</a></router-link>
-                <router-link :to="{name: 'history'}" tag="li" active-class="active"><a>History</a></router-link>
+                <router-link :to="{name: 'history'}" tag="li" active-class="active" ><a id="historyRoute">History</a></router-link>
                 <router-link :to="{name:'friends'}" tag="li" active-class="active"><a>Friends</a></router-link>
             </ul>
             </div>
@@ -16,7 +16,7 @@
                     </span>
                 </div>
             </div>
-            <button class="btn">Logout</button>
+            <button class="btn" @click="logout">Logout</button>
         </div>
         <router-view :user="user"></router-view>
     </div>
@@ -42,14 +42,25 @@
                 Global.getUser(userid)
                     .then((user) => {
                         this.user = user;
-                        console.log(user);
+
                     }, (err) => {
                         console.log(err);
                     });
+            },
+            logout(){
+                Global.logout();
+                this.$router.push({name:'login'});
             }
         },
-        mounted(){
+        created(){
             this.user = Global.user;
+            Global.getFriends()
+                .then((data) => {
+                console.log(data.body);
+                    Global.friendships = data.body;
+                },(err) => {
+                    console.log(err)
+                });
         }
     }
 </script>
@@ -83,9 +94,8 @@
     }
 
     .nav-pills > li > a:hover {
-
-        color: #fff;
-        background-color: #333333;
+        background-color: rgba(219, 215, 19, 0);;
+        transform: scale(1.1);
     }
 
     .nav-pills > li > a {
@@ -102,6 +112,11 @@
         max-height: 35px;
         color: white;
         background-color: #333;
+        outline: none;
+    }
+
+    .btn:active{
+        outline: none;
     }
 
 </style>

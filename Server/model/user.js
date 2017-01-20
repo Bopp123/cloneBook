@@ -22,13 +22,12 @@ const UserSchema = new Schema({
 	},
 	name: {
 		type: Name,
-        text:true,
 		required: [true, 'Name is required.']
 	},
 	age: Number,
 	birthday: Number,
 	address: {
-        type: [Address],
+        type: Address
 	},
 	contact: {
 		type: Contact,
@@ -38,6 +37,10 @@ const UserSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'post'
 	}],
+    friends: [{
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    }],
 	avatar: String,
 	followingPosts: [{
 		type: Schema.Types.ObjectId,

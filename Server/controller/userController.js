@@ -43,7 +43,7 @@ const getUsers = (req, res) => {
 }
 
 const getUser = (req, res) => {
-    if (!req.query.includeOwnPosts) {
+    if (!req.query.includePosts) {
         User.findById(req.params.id)
             .then((user) => {
                 res.json(user);
@@ -56,14 +56,8 @@ const getUser = (req, res) => {
         User.findById(req.params.id)
             .populate({
                 path: 'posts',
-                populate: {
-                    path: 'comments',
-                    model: 'comment',
-                    populate: {
-                        path: 'author',
-                        model: 'user'
-                    }
-                }
+                model: 'post',
+                populate: postPopQuery
             })
             .then((user) => {
                 res.json(user);
@@ -122,7 +116,7 @@ const update = (req, res) => {
     User.findByIdAndUpdate(req.params.id, req.body)
         .then((user) => {
             if (user) {
-                res.send('OK')
+                res.send('OK');
             } else {
                 res.status(404);
             }
@@ -161,7 +155,7 @@ const addImage = (req, res) => {
             })
                 .then((user) => {
                     if (user) {
-                        res.send('OK')
+                        res.send('OK');
                     } else {
                         res.status(404);
                     }

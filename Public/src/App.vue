@@ -20,9 +20,9 @@
         },
         mounted(){
             if (!Global.loggedIn) {
-                this.$router.push('/welcome/login');
+                this.$router.push({name: 'login'});
             } else {
-                this.$router.push(`/home/${Global.userId}`);
+                this.$router.push(`/home`);
             }
         }
     }

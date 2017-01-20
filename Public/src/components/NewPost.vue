@@ -25,6 +25,7 @@
                 <input class="file" ref="fileVideo" type="file" accept="video/*" @change="getVideoInput"></button>
             <button class="btn" @click="addYt"><img src="/assets/youtube.png"></span></button>
             <button class="btn post-button" @click="sendPost">Post</button>
+            <button class="btn close-button" @click="closePost">X</button>
         </div>
     </div>
 </template>
@@ -110,6 +111,7 @@
                         delete data.body.author;
                         data.body.author = {};
                         data.body.author.username = Global.user.username;
+                        data.body.author.avatar = Global.user.avatar;
                         eventBus.$emit('posted',(data.body));
                     }, (err) => {
                         console.log(err);
@@ -123,6 +125,9 @@
             },
             addYt(){
                 console.log('youtube');
+            },
+            closePost(){
+                eventBus.$emit('closePost');
             }
         }
 
@@ -159,6 +164,10 @@
         color: white;
         background-color: #333;
         margin-top: 10px;
+    }
+
+    .close-button{
+        margin-left: 20px;
     }
 
     .post {

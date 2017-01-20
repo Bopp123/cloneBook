@@ -1,8 +1,8 @@
 <template>
-    <div >
-        <div class="flex">
+    <div>
+        <div class="flex" v-if="!userEdit">
             <div class="avatar">
-                <img v-if="user.avatar" src="user.avatar">
+                <img v-if="user.avatar" :src="user.avatar">
                 <img v-else src=" http://placehold.it/160x220">
             </div>
             <div v-if="user" class="user-info">
@@ -28,8 +28,9 @@
                     <span v-if="user.contact"><label>Phonenumber: &nbsp&nbsp</label>{{user.contact.phone}}</span>
                 </div>
             </div>
-            <button ref="button" class="btn">Edit</button>
+            <button ref="button" class="btn" @click="editUser">Edit</button>
         </div>
+        <user-edit-comp v-if="userEdit" :user="user"></user-edit-comp>
         <div class="post">
             <div v-if="!newpost" class="text-center plus">
                 <button @click="showNewPost" class="post-btn">
@@ -55,18 +56,21 @@
 <script>
     import Newpost from './NewPost.vue';
     import Singlepost from './SinglePost.vue';
+    import UserEdit from './UserEdit.vue';
     import {eventBus} from "../main";
     import {Global} from '../global.js';
     export default {
         components: {
             newPost: Newpost,
-            singlePost: Singlepost
+            singlePost: Singlepost,
+            userEditComp: UserEdit
         },
         data: function () {
             return {
                 newpost: false,
                 posts: [],
-                loading: true
+                loading: true,
+                userEdit: false
             }
         },
         props: {
@@ -81,11 +85,14 @@
                 if (!Global.userId) return;
                 Global.getPosts(Global.userId)
                     .then((data) => {
-                    this.posts = data.body;
-                this.loading = false;
-            }, (err) => {
-                    console.log(err);
-                });
+                        this.posts = data.body;
+                        this.loading = false;
+                    }, (err) => {
+                        console.log(err);
+                    });
+            },
+            editUser(){
+                this.userEdit = true;
             }
         },
         created(){
@@ -95,8 +102,18 @@
             });
 
             eventBus.$on('posting', () => {
+                console.log("poooosting")
                 this.loading = true;
-            this.newpost = false;
+                this.newpost = false;
+            });
+
+            eventBus.$on('userSaved', () => {
+                this.userEdit = false;
+            });
+
+            eventBus.$on('closePost', () => {
+                console.log("cloooose")
+                this.newpost = false;
             });
         },
         mounted(){
@@ -175,10 +192,14 @@
         margin-bottom: 2em;
     }
 
-    .fa-spin{
+    .fa-spin {
         font-size: 6em;
         margin-bottom: 2em;
         margin-top: 2em;
+    }
+
+    img {
+        max-width: 250px;
     }
 
 
