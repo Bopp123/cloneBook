@@ -2,7 +2,7 @@
     <div>
         <head-comp></head-comp>
         <div class="container">
-            <router-view ></router-view>
+            <router-view></router-view>
         </div>
     </div>
 
@@ -17,13 +17,6 @@
 
         components: {
             headComp: Head
-        },
-        mounted(){
-            if (!Global.loggedIn) {
-                this.$router.push({name: 'login'});
-            } else {
-                this.$router.push(`/home`);
-            }
         }
     }
 </script>

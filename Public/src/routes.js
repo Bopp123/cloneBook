@@ -5,16 +5,18 @@ import Info from './components/Info.vue';
 import Home from './components/Home.vue';
 import User from './components/User.vue';
 import UserView from './components/UserView.vue';
+import Friends from './components/Friends.vue';
+import Error from './components/Error.vue';
 import {Global} from './global.js';
 
 export const routes = [
     {
-        path: '/welcome', component: Start, children: [
+        path: '', component: Start, children: [
         {
-            path: 'login', component: Login, name: 'login'
+            path: '', component: Login, name: 'login'
         },
         {
-            path: 'signup', component: Signup, name: 'signup'
+            path: '/signup', component: Signup, name: 'signup'
         }
     ]
     }, {
@@ -31,7 +33,7 @@ export const routes = [
                 path: 'edit', name: 'edit'
             },
             {
-                path: 'friends', name: 'friends'
+                path: 'friends', name: 'friends', component: Friends
             },
             {
                 path: 'history', name: 'history', component: UserView
@@ -47,5 +49,10 @@ export const routes = [
     }, {
         path: '/info',
         component: Info
+    },
+    {
+        path: '/error',
+        component: Error,
+        name: '404'
     }
 ];

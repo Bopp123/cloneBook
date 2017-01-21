@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="user-details">
+        <div class="user-details" v-if="!loading">
             <div class="flex">
                 <div class="avatar flex-row">
                     <img v-if="user.avatar" :src="user.avatar">
@@ -48,11 +48,13 @@
             </div>
             <div class="text-center">
                 <div class="text-center friend-status" v-if="!loading" v-show="!isUser">
-                    <button v-if="requestStatus === 'send'" class="btn" @click="addFriend">Send Friendrequest</button>
-                    <button v-else-if="requestStatus === 'accept'" class="btn" @click="addFriend">Approve request
-                    </button>
-                    <span v-else-if="requestStatus === 'pending'">{{user.username}} did not accept your friendrequest yet</span>
-                    <span v-else-if="requestStatus === 'friend'">{{user.username}} is your friend :)</span>
+                    <button class="btn" v-if="requestStatus === 'send'" @click="sendFriendRequest">send friend request</button>
+                    <div v-if="requestStatus === 'accept'">
+                        <button class="btn"  @click="acceptFriendRequest">accept friend request</button>
+                        <button class="btn decline"  @click="declineFriendRequest">decline</button>
+                    </div>
+                    <span v-if="requestStatus === 'pending'">{{user.username}} did not accept your friendrequest yet</span>
+                    <span v-if="requestStatus === 'friend'"> <i class="fa fa-check" aria-hidden="true"></i>{{user.username}} is your friend</span>
                 </div>
             </div>
         </div>
@@ -81,25 +83,53 @@
                 loading: true,
                 user: {},
                 userId: "",
+                requestStatus: ''
             }
         },
         methods: {
-            addFriend(){
-                console.log('addFriend');
-            },
             getUser(){
                 Global.getUser(this.userId, true)
                     .then((data) => {
                         console.log(data.body);
                         this.user = data.body;
+                        this.requestStatus = this.getRequestStatus();
                         this.loading = false;
+
                     }, (err) => {
-                    if(err.status === 401){
-                        console.log(err);
-                        this.$router.push({name: 'login'});
-                    }
-                        console.log(err);
+                        if (err.status === 401) {
+                            console.log(err);
+                            this.$router.replace({name: 'login'});
+                        }
+                        if (err.status === 404) {
+                            this.$router.push({name: '404'});
+                        }
+
                     });
+            },
+            acceptFriendRequest(){
+                Global.updateFriendship(this.userId, true)
+                    .then((data) => {
+                        this.status = 'friend';
+                    }, (err) => {
+                        console.log(err);
+                    })
+            },
+            declineFriendRequest(){
+                Global.updateFriendship(this.userId, false)
+                    .then((data) => {
+                        this.status = 'send';
+
+                    }, (err) => {
+                        console.log(err);
+                    })
+            },
+            sendFriendRequest(){
+                Global.sendFriendrequest(this.userId)
+                    .then((data) => {
+                        this.status = 'pending';
+                    }, (err) => {
+                        console.log(err);
+                    })
             },
             load(){
                 this.userId = this.$route.params.id;
@@ -110,22 +140,8 @@
                     this.$router.push({name: 'history'});
                 }
                 this.getUser();
-            }
-        },
-        computed: {
-            isUser(){
-                return this.userId === Global.userId;
             },
-            notFriendsYet(){
-                if (this.userId === Global.userId) {
-                    return false;
-                }
-                if (Global.user.friends.includes(this.user._id)) {
-                    return false
-                }
-                return true;
-            },
-            requestStatus(){
+            getRequestStatus(){
                 let status = 'send';
                 Global.friendships.forEach((friendship) => {
                     if (friendship.status === 'PENDING') {
@@ -148,7 +164,21 @@
                 return status;
             }
         },
-        mounted(){
+        computed: {
+            isUser(){
+                return this.userId === Global.userId;
+            },
+            notFriendsYet(){
+                if (this.userId === Global.userId) {
+                    return false;
+                }
+                if (Global.user.friends.includes(this.user._id)) {
+                    return false
+                }
+                return true;
+            }
+        },
+        beforeMount(){
             this.load();
             let self = this;
             document.getElementById('historyRoute').onclick = function () {

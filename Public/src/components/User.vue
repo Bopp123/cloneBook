@@ -45,7 +45,7 @@
             </p>
             <div class="post-list">
                 <div v-for="post in posts">
-                    <single-post :post="post" :key="post._id"></single-post>
+                        <single-post :post="post" :key="post._id"></single-post>
                 </div>
             </div>
         </div>

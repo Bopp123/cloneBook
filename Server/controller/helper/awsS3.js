@@ -12,8 +12,7 @@ const s3 = new AWS.S3();
 
 const uploadS3 = (bucketName, file, contentType, key) => {
 
-
-	var uploadParams = {};
+	let uploadParams = {};
 	uploadParams.Body = file;
 	uploadParams.Key = key;
 	uploadParams.Bucket = bucketName;
@@ -23,7 +22,7 @@ const uploadS3 = (bucketName, file, contentType, key) => {
 };
 
 const deleteS3 = (bucketName, key) => {
-	var params = {};
+	let params = {};
 	params.Key = key;
 	params.Bucket = bucketName;
 

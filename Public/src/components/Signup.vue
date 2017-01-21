@@ -73,7 +73,7 @@
                     console.log(this.user);
                     Global.postUser(this.user)
                         .then((data) => {
-                            this.$router.push('/welcome/login');
+                            this.$router.push('/');
                         }, (err) => {
                             console.log(err);
                             this.error= true;

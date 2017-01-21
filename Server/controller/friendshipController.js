@@ -28,9 +28,10 @@ const updateStatus = (req, res) => {
     Friendship.findById(req.params.id)
         .then((friendship) => {
             if (req.body.approved) {
-                friendship.approveFriendship()
-                    .then((friendsNow) => {
-                        User.find({_id: {$in: [friendsNow.userTwo, friendsNow.userOne]}})
+                friendship.status = "APPROVED";
+                friendship.save()
+                    .then(() => {
+                        User.find({_id: {$in: [friendship.userTwo, friendship.userOne]}})
                             .then((data) => {
                                 console.log(data);
                                 let user1 = data[0];
@@ -51,13 +52,11 @@ const updateStatus = (req, res) => {
                                     });
                             });
                     });
-            } else if (req.body.declined) {
-                friendship.declineFriendship()
-                    .then((notFriends) => {
-                        res.status(200).json(notFriends);
-                    });
             } else {
-                res.status(400).send("BAD REQUEST");
+                friendship.declineFriendship()
+                    .then(() => {
+                        res.status(200).json("declined");
+                    });
             }
         })
         .catch((error) => {

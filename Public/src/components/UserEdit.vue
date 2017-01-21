@@ -32,19 +32,19 @@
                 <label>Age</label>
                 <input v-model="user.age" type="number" class="form-control">
             </div>
-            <div class="form-group">
+            <div class="form-group" >
                 <label>Street</label>
                 <input v-model="user.address.street" type="text" class="form-control">
             </div>
-            <div class="form-group">
+            <div class="form-group" >
                 <label>Zip</label>
                 <input v-model="user.address.zip" type="text" class="form-control">
             </div>
-            <div class="form-group">
+            <div class="form-group" v-if="user.address">
                 <label>City</label>
                 <input v-model="user.address.city" type="text" class="form-control">
             </div>
-            <div class="form-group">
+            <div class="form-group" >
                 <label>Country</label>
                 <input v-model="user.address.country" type="text" class="form-control">
             </div>
@@ -120,17 +120,16 @@
                 formData.append("image", this.image);
                 Global.sendUserAvatar(formData)
                     .then((data) => {
-                        console.log(data);
+                        Global.user.avatar = data.body;
                     }, (err) => {
                         console.log(err);
                     })
             }
         },
 
-        beforeCreated() {
+        created() {
             if (this.user.address) return;
             this.user.address = {};
-            console.log('useredit', this.user);
         }
     }
 </script>

@@ -20,11 +20,14 @@ export const Global = new Vue({
         updateUser(user){
             return this.$http.put(`user/${this.userId}`, user, {headers: {'Authorization': `Bearer ${this.token}`}});
         },
-        getUser(userId,includePosts){
-            if(includePosts){
+        getUser(userId, includePosts){
+            if (includePosts) {
                 return this.$http.get(`user/${userId}?includePosts=true`, {headers: {'Authorization': `Bearer ${this.token}`}});
             }
             return this.$http.get(`user/${userId}`, {headers: {'Authorization': `Bearer ${this.token}`}});
+        },
+        findUsers(query){
+            return this.$http.get(`user${query}`, {headers: {'Authorization': `Bearer ${this.token}`}});
         },
         sendPost(formData){
             return this.$http.post(`post`, formData, {headers: {'Authorization': `Bearer ${this.token}`}});
@@ -49,6 +52,23 @@ export const Global = new Vue({
         },
         getFriends(){
             return this.$http.get(`user/${this.userId}/friends`, {headers: {'Authorization': `Bearer ${this.token}`}});
+        },
+        sendFriendrequest(userId){
+            return this.$http.post(`friendship/`, {id: userId}, {headers: {'Authorization': `Bearer ${this.token}`}});
+        },
+        updateFriendship(userId, accept){
+            let id;
+            this.friendships.some((friendship) => {
+                if (friendship.userOne === userId || friendship.userTwo === userId) {
+                    id = friendship._id;
+                }
+            });
+            console.log(id);
+            return this.$http.put(`friendship/${id}`, {approved: accept}, {headers: {'Authorization': `Bearer ${this.token}`}});
+
+        },
+        performSearch(string){
+            return this.$http.get(`search/?string=${string}`, {headers: {'Authorization': `Bearer ${this.token}`}});
         },
         logout(){
             this.token = "";

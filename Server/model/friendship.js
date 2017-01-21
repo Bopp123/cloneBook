@@ -22,7 +22,7 @@ const FriendshipSchema = new Schema({
 
 FriendshipSchema.methods.approveFriendship = function () {
 	this.status = 'APPROVED'
-	return this.save();
+	return this.update();
 };
 
 FriendshipSchema.methods.declineFriendship = function () {

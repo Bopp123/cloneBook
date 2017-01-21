@@ -3,7 +3,7 @@
     <div class=" content start-nav ">
 
         <ul class=" nav nav-tabs nav-justified">
-            <router-link :to="{name: 'login'}" tag="li" active-class="active"><a>Login</a></router-link>
+            <router-link :to="{name: 'login'}" tag="li" active-class="active" exact><a>Login</a></router-link>
             <router-link :to="{name:'signup'}" tag="li" active-class="active"><a>Sign Up</a></router-link>
         </ul>
         <router-view></router-view>

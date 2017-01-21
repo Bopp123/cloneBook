@@ -33,7 +33,7 @@ const create = (req, res) => {
 }
 
 const getUsers = (req, res) => {
-    User.find(req.query)
+    User.find(req.query).select('_id + username')
         .then((users) => {
             res.json(users);
         })
@@ -46,7 +46,12 @@ const getUser = (req, res) => {
     if (!req.query.includePosts) {
         User.findById(req.params.id)
             .then((user) => {
-                res.json(user);
+                if (user !== null) {
+                    if(!user.avatar) user.avatar = "http://placehold.it/160x220";
+                    res.json(user);
+                } else {
+                    res.status(404).json('nothing found');
+                }
             })
             .catch((error) => {
                 res.status(404);
@@ -60,7 +65,11 @@ const getUser = (req, res) => {
                 populate: postPopQuery
             })
             .then((user) => {
-                res.json(user);
+                if (user !== null) {
+                    res.json(user);
+                } else {
+                    res.status(404).json('nothing found');
+                }
             })
             .catch((error) => {
                 res.status(404);
@@ -148,14 +157,15 @@ const remove = (req, res) => {
 
 const addImage = (req, res) => {
     //bucketName, file, contentType, title
-    aws.uploadS3('clonebookuser', req.file.buffer, req.file.mimetype, req.params.id)
+    aws.uploadS3('clonebookuser', req.file.buffer, req.file.mimetype, req.params.id+ new Date().getTime())
         .then((data) => {
             User.findByIdAndUpdate(req.params.id, {
                 'avatar': data.Location
-            })
+            }, {new: true})
                 .then((user) => {
                     if (user) {
-                        res.send('OK');
+                        // res.send('OK');
+                        res.json(user.avatar);
                     } else {
                         res.status(404);
                     }
