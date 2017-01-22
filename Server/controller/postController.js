@@ -11,14 +11,16 @@ const savePost = (userId, post, res) => {
             }
         })
             .then((user) => {
+        console.log(user.friends);
                 User.update({_id: {$in: user.friends}},
                     {
                         $addToSet: {
                             "followingPosts": post
                         }
-                    })
+
+                    },  {multi: true})
                     .then(() => {
-                    //executes update
+                        //executes update
                     });
             })
     ])
@@ -26,6 +28,7 @@ const savePost = (userId, post, res) => {
             res.json(post);
         })
         .catch((err) => {
+        console.log(err);
             res.status(500).json(err);
         });
 

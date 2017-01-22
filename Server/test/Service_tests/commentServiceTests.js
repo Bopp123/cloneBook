@@ -52,7 +52,8 @@ describe('Testing Service methods for comment', () => {
 			title: 'test title',
 			content: 'test content 123',
 			mediaType: 'IMG',
-			media: 'http://placekitten.com/200/300'
+			media: 'http://placekitten.com/200/300',
+            author: user
 		});
 
 		comment = new Comment({
@@ -119,15 +120,16 @@ describe('Testing Service methods for comment', () => {
 			});
 	});
 
-	it('PUT /data/comment/:id/like puts a like to an existing post and checks if this post is now followed b the requester', (done) => {	
+	it('PUT /data/comment/:id/like puts a like to an existing post and checks if this post is now followed b the requester', (done) => {
 		request(app)
 			.put(`/data/comment/${comment._id}/like`)
 			.set('Authorization', 'Bearer ' + token)
 			.expect(200)
 			.end((err,res) => {	
 				Comment.findById(comment._id)
-				 .then((commentN) => {	
-				 	assert(commentN.likesCount === 1);
+				 .then((commentN) => {
+
+                     assert(commentN.likesCount === 1);
 				 	done();
 				 });
 			});

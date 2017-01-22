@@ -115,6 +115,10 @@
                 console.log("cloooose")
                 this.newpost = false;
             });
+            const self = this;
+            setInterval(() => {
+                self.fetchUserPost();
+            },5000)
         },
         mounted(){
             if (!Global.userId) return;

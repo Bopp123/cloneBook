@@ -17,7 +17,7 @@
             <div class="accepted-friends text-center" v-if="friends.length !== 0">
                 <h2>You have {{friendsSize}} {{friendOrFriends}}: </h2>
                 <div v-for="friend in friends">
-                    <single-user :userId="getOtherUser(friend)" :nostatus="true"></single-user>
+                    <single-user :userId="getOtherUser(friend)" :nostatus="true" :key="friend._id"></single-user>
                 </div>
             </div>
             <div v-else>
@@ -77,22 +77,23 @@
                 this.pendingFriends = [];
                 this.friends = [];
 
-                Global.getFriends()
-                    .then((data) => {
-
-                        Global.friendships = data.body;
+//                Global.getFriends()
+//                    .then((data) => {
+//                        console.log(data);
+//                        Global.friendships = data.body;
                         Global.friendships.forEach((friendship) => {
                             if (friendship.status === 'PENDING') {
                                 this.pendingFriends.push(friendship);
                             } else {
                                 this.friends.push(friendship);
                             }
-                        });
-                        console.log(this.friends);
-                        this.loading = false;
-                    }, (err) => {
-                        console.log(err)
+//                        });
+//                        console.log(Global.friendships, 'after action');
+
+//                    }, (err) => {
+//                        console.log(err)
                     });
+                this.loading = false;
             }
         },
         computed: {
@@ -116,7 +117,7 @@
                 this.searchOpen = 'performed';
                 this.showResultList =true;
             });
-            eventBus.$on('friendshipAction', () => {
+            eventBus.$on('friendshipActionDone', () => {
                 this.fetchFriends();
             });
 

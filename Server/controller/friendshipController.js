@@ -33,7 +33,6 @@ const updateStatus = (req, res) => {
                     .then(() => {
                         User.find({_id: {$in: [friendship.userTwo, friendship.userOne]}})
                             .then((data) => {
-                                console.log(data);
                                 let user1 = data[0];
                                 let user2 = data[1];
                                 if (!user1.friends.includes(user2)) {

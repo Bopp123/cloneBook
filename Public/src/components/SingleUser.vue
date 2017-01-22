@@ -1,7 +1,8 @@
 <template>
     <div class="flex-item main">
         <div class="flex text-center">
-            <router-link :to="{name: 'userView' , params: { id: userId}}"><a>
+            <router-link :to="{name: 'userView' , params: { id: userId}}">
+                <a id="userRoute">
                 <div class="flex-item text-center">
                     <img :src="user.avatar">
                     <span class="username">{{user.username}}</span>
@@ -63,7 +64,7 @@
                 Global.updateFriendship(this.userId, true)
                     .then((data) => {
                         this.status = 'friend';
-                        eventBus.$emit('friendshipAction');
+                        eventBus.$emit('friendshipAction', this.userId);
                     }, (err) => {
                         console.log(err);
                     })

@@ -52,14 +52,12 @@ PostSchema.virtual('created').get(function () {
 });
 
 PostSchema.pre('save', function (next) {
-    console.log('saved');
-    this.updated = Date.now();
+    this.updated = new Date().getTime();
     next();
 });
 
 PostSchema.pre('update', function (next) {
-    console.log('update');
-    this.updated = Date.now();
+    this.updated = new Date().getTime();
     next();
 });
 

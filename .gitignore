@@ -1,5 +1,3 @@
 *.log
 node_modules
-oldTests
-Server/config/secret.json
-.idea
+.idea/*

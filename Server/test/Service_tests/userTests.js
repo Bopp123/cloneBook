@@ -181,7 +181,7 @@ describe('Testing Service methods for user', () => {
 			});
 	});
 
-	it.only('GET all posts, an user with given id has posted', (done) => {
+	it('GET all posts, an user with given id has posted', (done) => {
 
 		post1 = new Post({
 			title: 'test title',

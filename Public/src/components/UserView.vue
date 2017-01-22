@@ -90,11 +90,9 @@
             getUser(){
                 Global.getUser(this.userId, true)
                     .then((data) => {
-                        console.log(data.body);
                         this.user = data.body;
                         this.requestStatus = this.getRequestStatus();
                         this.loading = false;
-
                     }, (err) => {
                         if (err.status === 401) {
                             console.log(err);
@@ -109,7 +107,8 @@
             acceptFriendRequest(){
                 Global.updateFriendship(this.userId, true)
                     .then((data) => {
-                        this.status = 'friend';
+                        this.requestStatus = 'friend';
+                        eventBus.$emit('friendshipAction', this.userId);
                     }, (err) => {
                         console.log(err);
                     })
@@ -117,7 +116,8 @@
             declineFriendRequest(){
                 Global.updateFriendship(this.userId, false)
                     .then((data) => {
-                        this.status = 'send';
+                        this.requestStatus = 'send';
+                        eventBus.$emit('friendshipAction');
 
                     }, (err) => {
                         console.log(err);
@@ -126,7 +126,8 @@
             sendFriendRequest(){
                 Global.sendFriendrequest(this.userId)
                     .then((data) => {
-                        this.status = 'pending';
+                        this.requestStatus = 'pending';
+                        eventBus.$emit('friendshipAction');
                     }, (err) => {
                         console.log(err);
                     })
@@ -146,11 +147,9 @@
                 Global.friendships.forEach((friendship) => {
                     if (friendship.status === 'PENDING') {
                         if (friendship.userOne === this.user._id && friendship.userTwo === Global.userId) {
-                            console.log('accept req')
                             status = 'accept';
                         }
                         if (friendship.userOne === Global.userId && friendship.userTwo === this.user._id) {
-                            console.log('pending');
                             status = 'pending'
                         }
                     }
@@ -178,13 +177,21 @@
                 return true;
             }
         },
+        watch: {
+            '$route' (to, from) {
+               this.load();
+            }
+        },
         beforeMount(){
             this.load();
+            this.$forceUpdate();
             let self = this;
             document.getElementById('historyRoute').onclick = function () {
                 self.load();
                 self.$forceUpdate();
             }
+
+
         }
     }
 </script>

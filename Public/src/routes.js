@@ -43,7 +43,8 @@ export const routes = [
             {
                 path: '/home/user/:id',
                 name: 'userView',
-                component: UserView
+                component: UserView,
+                canReuse: false
             }
         ]
     }, {

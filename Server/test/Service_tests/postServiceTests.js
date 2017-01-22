@@ -105,12 +105,7 @@ describe('Testing Service methods for post', () => {
 			})
 			.end((err, response) => {
 				assert(response.body.title === 'posttest');
-				User.findById(user2._id)
-					.then((data) => {
-						assert(data.followingPosts[0].toString() === response.body._id.toString());
-						done();
-					})
-
+				done();
 			});
 	});
 

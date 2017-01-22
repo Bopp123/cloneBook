@@ -70,7 +70,6 @@ const remove = (req, res) => {
 }
 
 const addLike = (req, res) => {
-    console.log(req.user._id);
     Comment.findByIdAndUpdate(req.params.id, {
         $addToSet: {
             "likes": req.user._id

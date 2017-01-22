@@ -37,6 +37,7 @@
     import {Global} from '../global.js';
     import User from './User.vue';
     import SearchResultList from './SearchResultList.vue';
+    import {eventBus} from "../main";
 
 
     export default{
@@ -45,7 +46,8 @@
                 user: {},
                 searchText: '',
                 results: [],
-                searched: false
+                searched: false,
+                friendInterval: 0
             }
         },
         components: {
@@ -74,12 +76,22 @@
             },
             instantSearch(){
                 if (this.searchText.length > 3) {
-                    setTimeout(() => {
-
-                        this.performSearch();
-                    }, 500);
+                    this.performSearch();
+                }
+                if (this.searchText === '') {
+                    this.searched  =false;
                 }
 
+            },
+            fetchFriends(userId){
+                if(userId) Global.user.friends.push(userId);
+                Global.getFriends()
+                    .then((data) => {
+                        Global.friendships = data.body;
+                        eventBus.$emit('friendshipActionDone');
+                    }, (err) => {
+                        console.log(err)
+                    });
             },
             logout(){
                 Global.logout();
@@ -94,13 +106,19 @@
         },
         created(){
             this.user = Global.user;
-            Global.getFriends()
-                .then((data) => {
-                    console.log(data.body);
-                    Global.friendships = data.body;
-                }, (err) => {
-                    console.log(err)
-                });
+            this.fetchFriends();
+            eventBus.$on('friendshipAction', (userId) => {
+                console.log('event load friends');
+                this.fetchFriends(userId);
+            });
+
+            const self = this;
+           this.friendInterval =  setInterval(() => {
+                this.fetchFriends();
+            },5000)
+        },
+        beforeDestroy(){
+            clearInterval(this.friendInterval);
         }
     }
 </script>
