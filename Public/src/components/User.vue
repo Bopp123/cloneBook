@@ -45,7 +45,7 @@
             </p>
             <div class="post-list">
                 <div v-for="post in posts">
-                        <single-post :post="post" :key="post._id"></single-post>
+                    <single-post :post="post" :key="post._id"></single-post>
                 </div>
             </div>
         </div>
@@ -63,7 +63,8 @@
         components: {
             newPost: Newpost,
             singlePost: Singlepost,
-            userEditComp: UserEdit
+            userEditComp: UserEdit,
+            userInterval: 0
         },
         data: function () {
             return {
@@ -116,13 +117,17 @@
                 this.newpost = false;
             });
             const self = this;
-            setInterval(() => {
-                self.fetchUserPost();
-            },5000)
+            this.userInterval = setInterval(() => {
+                    this.fetchUserPost();
+                },
+                5000);
         },
         mounted(){
             if (!Global.userId) return;
             this.fetchUserPost();
+        },
+        beforeDestroy(){
+            clearInterval(this.userInterval);
         }
     }
 </script>
