@@ -55,5 +55,9 @@ export const routes = [
         path: '/error',
         component: Error,
         name: '404'
+    },
+    {
+        path: '/*',
+        component: Error,
     }
 ];

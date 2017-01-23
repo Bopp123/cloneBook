@@ -15,7 +15,7 @@ const create = (req, res) => {
                     "comments": commentFound._id
                 },
                 $set: {
-                    "updated": Date.now()
+                    "updated": new Date().getTime()
                 }
             }, {
                 new: true

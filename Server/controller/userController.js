@@ -93,8 +93,12 @@ const getPosts = (req, res) => {
         .then((user) => {
             let posts = user.followingPosts.concat(user.posts);
             posts.sort((a, b) => {
-                return b.updated > a.updated;
+                return b.updated - a.updated;
             });
+            // posts.forEach((post) => {
+            //     console.log(post.updated);
+            // })
+            // console.log(posts);
             res.json(posts);
         })
         .catch((error) => {
