@@ -11,7 +11,6 @@ const savePost = (userId, post, res) => {
             }
         })
             .then((user) => {
-        console.log(user.friends);
                 User.update({_id: {$in: user.friends}},
                     {
                         $addToSet: {
@@ -23,7 +22,7 @@ const savePost = (userId, post, res) => {
                         //executes update
                     });
             })
-    ])
+    ])// end Promise all
         .then(() => {
             res.json(post);
         })

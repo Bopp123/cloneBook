@@ -11,7 +11,8 @@ import {Global} from './global.js';
 
 export const routes = [
     {
-        path: '', component: Start, children: [
+        path: '', component: Start, 
+        children: [
         {
             path: '', component: Login, name: 'login'
         },

@@ -47,7 +47,8 @@
                 searchText: '',
                 results: [],
                 searched: false,
-                friendInterval: 0
+                friendInterval: 0,
+                loading: false
             }
         },
         components: {
@@ -111,10 +112,19 @@
                 console.log('event load friends');
                 this.fetchFriends(userId);
             });
+            eventBus.$on('posted', (post) => {
+                this.loading = false;
+            });
+
+            eventBus.$on('posting', () => {
+                this.loading = true;
+            });
 
             const self = this;
            this.friendInterval =  setInterval(() => {
-                this.fetchFriends();
+               if(!this.loading){
+                    this.fetchFriends();
+                }
             },5000)
         },
         beforeDestroy(){

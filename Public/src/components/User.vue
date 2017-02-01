@@ -103,7 +103,6 @@
             });
 
             eventBus.$on('posting', () => {
-                console.log("poooosting")
                 this.loading = true;
                 this.newpost = false;
             });
@@ -117,8 +116,11 @@
                 this.newpost = false;
             });
             const self = this;
+
             this.userInterval = setInterval(() => {
+                if(!this.loading){
                     this.fetchUserPost();
+                }
                 },
                 5000);
         },

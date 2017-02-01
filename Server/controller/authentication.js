@@ -6,7 +6,6 @@ module.exports.login = function(req, res) {
 
   passport.authenticate('local', function(err, user, info){
     let token;
-
     // If Passport throws/catches an error
     if (err) {
       res.status(404).json(err);
@@ -25,5 +24,4 @@ module.exports.login = function(req, res) {
       res.status(401).json(info);
     }
   })(req, res);
-
 };

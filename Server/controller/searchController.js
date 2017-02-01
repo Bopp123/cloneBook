@@ -24,11 +24,12 @@ const search = function (req, res) {
         .then((data) => {
            const result =  data[1].concat(data[0]);
            result.sort((a,b) => {
-                return a.score>b.score;
+                return a.score - b.score;
            })
             res.json(result);
         })
         .catch((err) => {
+            console.log(err);
             res.json(err);
         });
 }
