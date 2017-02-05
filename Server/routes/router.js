@@ -39,5 +39,5 @@ module.exports = (app) => {
     /**
 	 * Search service
      */
-    app.get('/clonebook/data/search', auth, SearchController.search);
+    app.get('data/search', auth, SearchController.search);
 };

@@ -9,17 +9,17 @@ module.exports = (app, auth) => {
 
 	//POST new post
 	//creates a new post from given request.body object
-	app.post('/clonebook/data/post', auth, multer.single('media'), PostController.create);
+	app.post('/data/post', auth, multer.single('media'), PostController.create);
 
 	//PUT post
 	//updates a given post
-	app.put('/clonebook/data/post/:id', auth, PostController.update);
+	app.put('/data/post/:id', auth, PostController.update);
 
 	//PUT a like for given posts
 	//updates given post and adds one like
-	app.put('/clonebook/data/post/:id/like', auth, PostController.addLike);
+	app.put('data/post/:id/like', auth, PostController.addLike);
 
 	//DELETE post
 	//deletes a given user
-	app.delete('/clonebook/data/post/:id', auth, PostController.remove);
+	app.delete('/data/post/:id', auth, PostController.remove);
 }
