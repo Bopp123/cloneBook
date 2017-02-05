@@ -113,7 +113,7 @@
         width: 100%;
         border-width: 1px;
         border-style: solid;
-        border-color: #3333;
+        border-color: #333333;
         padding: 1em;
         max-width: 80%;
         border-radius: 10px;
