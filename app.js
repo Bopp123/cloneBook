@@ -15,14 +15,8 @@ const app = express();
 app.use(bodyParser.urlencoded({'extended': 'true'})); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());
 
-
-
-
-
-
-
 if(process.env.NODE_ENV !== 'test'){
-    app.use(express.static(__dirname + '/Public'));
+    app.use(express.static(__dirname + '/clonebook/Public'));
     app.use(morgan('dev')); // log every request to the console
     mongoose.Promise = require('bluebird');
     mongoose.connect('mongodb://root:root@ds139438.mlab.com:39438/clonebookdb');
@@ -41,7 +35,7 @@ app.use(passport.initialize());
 
 router(app);
 
-app.get('*', function (req,res) {
+app.get('/clonebook', function (req,res) {
     //noinspection JSUnresolvedFunction
     res.sendFile(__dirname + "/Public/index.html");
 });
