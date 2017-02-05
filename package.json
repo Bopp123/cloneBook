@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test nodemon --exec 'mocha Server/test/ --recursive'",
-    "start": "concurrently \"node index.js\" \"webpack --config webpack.config.js\"",
-    "build": "webpack --config webpack.config.js"
+    "start": "node index.js",
+    "build": "webpack --config webpack.config.js",
+    "production": "NODE_ENV=production concurrently \"node index.js\" \"webpack --config webpack.config.js\""
   },
   "author": "Konstantin Schall",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-jwt": "^5.1.0",
+    "express-subdomain": "^1.0.5",
     "jsonwebtoken": "^7.2.1",
     "mongoose": "^4.7.7",
     "mongoose-text-search": "0.0.2",

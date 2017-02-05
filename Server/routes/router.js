@@ -10,20 +10,20 @@ var auth = jwt({
   secret: secret.token,
 });
 
-module.exports = (app) => {	
-	
+module.exports = (app) => {
+
 	/**
 	USER services
 	-------------
 	**/
 	userServices(app,auth);
-	
+
 	/**
 	POST services
 	-------------
 	**/
 	postServices(app,auth);
-	
+
 	/**
 	FRIENDSHIP services
 	-------------
