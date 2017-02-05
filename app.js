@@ -41,7 +41,7 @@ app.use(passport.initialize());
 
 router(app);
 
-app.get('/', function (req,res) {
+app.get('*', function (req,res) {
     //noinspection JSUnresolvedFunction
     res.sendFile(__dirname + "/Public/index.html");
 });
